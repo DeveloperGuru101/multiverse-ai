@@ -3,14 +3,13 @@ import React from "react";
 import "./styles.css";
 import logo from "./assets/logo.png";
 
-
 export default function App() {
   return (
     <div className="app">
       {/* HERO */}
       <div className="logo-wrapper">
-  <img src={logo} alt="Multiverse AI Logo" className="logo-centered" />
-</div>
+        <img src={logo} alt="Multiverse AI Logo" className="logo-centered" />
+      </div>
 
       <section className="hero">
         <div className="hero-content">
@@ -25,7 +24,7 @@ export default function App() {
             powerful cloud dashboard.
           </p>
           <div className="buttons">
-            <a href="#pricing" className="btn primary">
+            <a href="https://warriorplus.com/o2/a/hffvq05/0" className="btn primary">
               Get Instant Access
             </a>
             <a href="#features" className="btn secondary">
@@ -155,7 +154,7 @@ export default function App() {
           <h2>Why Multiverse AI?</h2>
           <ul>
             {benefits.map((b, i) => (
-              <li key={i}>✔ {b}</li>
+              <li key={i}> {b}</li>
             ))}
           </ul>
         </div>
@@ -164,12 +163,20 @@ export default function App() {
       {/* PRICING */}
       <section id="pricing" className="pricing">
         <h2>Unlock Unlimited AI Power Today</h2>
-        <p>One‑time payment. No subscriptions. No limits.</p>
+        <p>One-time payment. No subscriptions. No limits.</p>
 
         <div className="price-card">
           <span>Lifetime Access</span>
           <h3>$14.95</h3>
-          <button>Get Started Now</button>
+
+          <a
+            href="https://warriorplus.com/o2/a/hffvq05/0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-link"
+          >
+            Click Here To Unlock Multiverse AI 2.0 Now!
+          </a>
         </div>
       </section>
 

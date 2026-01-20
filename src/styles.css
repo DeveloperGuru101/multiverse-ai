@@ -299,3 +299,20 @@ footer {
 .logo-centered:hover {
   transform: scale(1.05);
 }
+
+.cta-link {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 32px;
+  background: #ffffff;
+  color: #4f46e5;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: all 0.25s ease;
+}
+
+.cta-link:hover {
+  transform: scale(1.05);
+  background: #f1f5ff;
+}
