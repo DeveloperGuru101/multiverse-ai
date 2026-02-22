@@ -10,6 +10,86 @@ export default function App() {
       <div className="logo-wrapper">
         <img src={logo} alt="Multiverse AI Logo" className="logo-centered" />
       </div>
+      <section style={{ textAlign: "center", marginBottom: "60px" }}>
+        <h1 style={{ fontSize: "42px", marginBottom: "20px" }}>
+          Access GPT, Gemini, Claude & 20+ AI Tools – All in One Dashboard
+        </h1>
+        <p style={{ fontSize: "20px", opacity: 0.8 }}>
+          Stop paying hundreds per month for separate AI subscriptions.
+          Multiverse AI gives you lifetime access to text, image, video and
+          voice AI tools.
+        </p>
+        <a
+          href="https://warriorplus.com/o2/a/hffvq05/0"
+          target="_blank"
+          style={{
+            display: "inline-block",
+            marginTop: "30px",
+            padding: "15px 30px",
+            background: "linear-gradient(90deg,#7b2ff7,#f107a3)",
+            borderRadius: "8px",
+            color: "#fff",
+            textDecoration: "none",
+            fontWeight: "bold",
+          }}
+        >
+          🔥 Get Instant Lifetime Access Now
+        </a>
+      </section>
+
+      {/* Demo Video Section */}
+      <section
+        style={{
+          marginBottom: "80px",
+          textAlign: "center",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "32px",
+            marginBottom: "20px",
+          }}
+        >
+          Watch Multiverse AI In Action
+        </h2>
+
+        <p
+          style={{
+            fontSize: "18px",
+            opacity: 0.8,
+            marginBottom: "30px",
+          }}
+        >
+          See how you can access GPT, Gemini, Claude, AI Video, AI Voice and
+          more — all from one powerful dashboard.
+        </p>
+
+        <div
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 0 40px rgba(123, 47, 247, 0.4)",
+          }}
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            controls
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+            }}
+          >
+            <source src="/demo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
 
       <section className="hero">
         <div className="hero-content">
@@ -24,7 +104,10 @@ export default function App() {
             powerful cloud dashboard.
           </p>
           <div className="buttons">
-            <a href="https://warriorplus.com/o2/a/hffvq05/0" className="btn primary">
+            <a
+              href="https://warriorplus.com/o2/a/hffvq05/0"
+              className="btn primary"
+            >
               Get Instant Access
             </a>
             <a href="#features" className="btn secondary">
@@ -160,10 +243,25 @@ export default function App() {
         </div>
       </section>
 
+      <section className="benefits">
+        <div className="benefits-box">
+          <h2>Who Is This For?</h2>
+          <ul>
+            {benefitsForUser.map((b, i) => (
+              <li key={i}> {b}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* PRICING */}
       <section id="pricing" className="pricing">
-        <h2>Unlock Unlimited AI Power Today</h2>
-        <p>One-time payment. No subscriptions. No limits.</p>
+        <h2>Multiverse AI vs Individual Subscriptions</h2>
+        <h3>
+          Instead of paying separately for ChatGPT, Gemini, Claude, image AI
+          tools and video AI tools, access everything from one secure cloud
+          dashboard.
+        </h3>
 
         <div className="price-card">
           <span>Lifetime Access</span>
@@ -220,4 +318,13 @@ const benefits = [
   "Create professional content instantly",
   "Future‑proof AI access",
   "Secure & private cloud environment",
+];
+
+const benefitsForUser = [
+  "Perfect for Content Creators who want faster content generation",
+  "Ideal for Affiliate Marketers looking to scale campaigns with AI",
+  "Great for Agencies managing multiple client AI workflows",
+  "Useful for Startups reducing expensive AI subscriptions",
+  "Helpful for Students learning and researching smarter",
+  "Powerful for Developers integrating multiple AI models",
 ];
