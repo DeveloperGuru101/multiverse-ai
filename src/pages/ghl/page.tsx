@@ -1,650 +1,530 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
-const GHL_LINK = "https://www.gohighlevel.com/?fp_ref=guruprasad57";
+const styles = `
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ee;
+    --accent: #ff5c00;
+    --accent2: #ffb800;
+    --gray: #1a1a1a;
+    --gray2: #2a2a2a;
+    --muted: #888;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .page { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #222;
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: var(--font-head); font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent); color: #fff;
+    border: none; padding: 10px 20px;
+    font-family: var(--font-body); font-size: 13px; font-weight: 500;
+    cursor: pointer; border-radius: 4px; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* HOOK */
+  .hook {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hook::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(255,92,0,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hook-tag {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px; border-radius: 2px;
+    margin-bottom: 32px;
+  }
+  .hook h1 {
+    font-family: var(--font-head);
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    margin-bottom: 28px;
+  }
+  .hook h1 em { color: var(--accent); font-style: normal; }
+  .hook h1 .line2 { color: var(--muted); }
+  .hook-sub {
+    font-size: 18px; color: #aaa; max-width: 560px;
+    line-height: 1.7; margin-bottom: 44px;
+    font-weight: 300;
+  }
+  .hook-sub strong { color: var(--white); font-weight: 500; }
+  .cta-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    border: none; padding: 16px 32px;
+    font-family: var(--font-body); font-size: 15px; font-weight: 500;
+    cursor: pointer; border-radius: 4px; text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { transform: translateY(-2px); opacity: 0.9; }
+  .btn-ghost {
+    background: transparent; color: var(--white);
+    border: 1px solid #333; padding: 16px 32px;
+    font-family: var(--font-body); font-size: 15px; font-weight: 400;
+    cursor: pointer; border-radius: 4px;
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: #666; }
+  .hook-note { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+  /* STATS BAR */
+  .stats-bar {
+    border-top: 1px solid #1e1e1e;
+    border-bottom: 1px solid #1e1e1e;
+    padding: 32px 0;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 0 24px;
+    border-right: 1px solid #1e1e1e;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: var(--font-head);
+    font-size: 36px; font-weight: 800;
+    color: var(--accent); letter-spacing: -1px;
+  }
+  .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  /* SECTION COMMONS */
+  section { padding: 96px 0; }
+  .section-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--font-head);
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; letter-spacing: -1px;
+    line-height: 1.1; margin-bottom: 20px;
+  }
+  .section-sub { font-size: 17px; color: #aaa; max-width: 560px; font-weight: 300; line-height: 1.7; }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px; margin-top: 56px;
+    border: 1px solid #1e1e1e;
+  }
+  .feature-card {
+    background: var(--gray);
+    padding: 32px 28px;
+    border: 1px solid #222;
+    transition: background 0.2s;
+  }
+  .feature-card:hover { background: #1f1f1f; }
+  .feature-icon {
+    width: 40px; height: 40px;
+    background: rgba(255,92,0,0.1);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 20px;
+  }
+  .feature-card h3 {
+    font-family: var(--font-head); font-size: 17px; font-weight: 700;
+    margin-bottom: 10px; letter-spacing: -0.3px;
+  }
+  .feature-card p { font-size: 14px; color: #888; line-height: 1.6; }
+
+  /* PROBLEMS */
+  .problems-section { background: #0d0d0d; }
+  .problems-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; margin-top: 56px;
+  }
+  .problem-card {
+    background: var(--gray);
+    border: 1px solid #222;
+    border-left: 3px solid #ff3333;
+    padding: 28px 24px;
+  }
+  .problem-card h4 {
+    font-family: var(--font-head); font-size: 15px; font-weight: 700;
+    margin-bottom: 8px; color: #ff6666;
+  }
+  .problem-card p { font-size: 14px; color: #888; line-height: 1.6; }
+
+  /* SOLUTION */
+  .solution-list { margin-top: 56px; }
+  .solution-item {
+    display: flex; gap: 24px; align-items: flex-start;
+    padding: 28px 0;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .solution-item:last-child { border-bottom: none; }
+  .solution-num {
+    font-family: var(--font-head); font-size: 48px; font-weight: 800;
+    color: #1e1e1e; line-height: 1; flex-shrink: 0; min-width: 60px;
+  }
+  .solution-content h3 {
+    font-family: var(--font-head); font-size: 20px; font-weight: 700;
+    margin-bottom: 8px; letter-spacing: -0.3px;
+  }
+  .solution-content p { font-size: 15px; color: #888; line-height: 1.7; }
+  .solution-badge {
+    display: inline-block; margin-top: 12px;
+    background: rgba(255,184,0,0.1); color: var(--accent2);
+    border: 1px solid rgba(255,184,0,0.2);
+    font-size: 12px; padding: 4px 12px; border-radius: 2px;
+  }
+
+  /* REVIEWS */
+  .reviews-section { background: #0d0d0d; }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px; margin-top: 56px;
+  }
+  .review-card {
+    background: var(--gray); border: 1px solid #222;
+    padding: 28px 24px;
+  }
+  .stars { color: var(--accent2); font-size: 14px; margin-bottom: 16px; }
+  .review-text { font-size: 15px; color: #ccc; line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .review-author { display: flex; align-items: center; gap: 12px; }
+  .avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent); display: flex; align-items: center;
+    justify-content: center; font-size: 13px; font-weight: 700;
+    color: #fff; flex-shrink: 0;
+  }
+  .author-name { font-size: 14px; font-weight: 500; }
+  .author-role { font-size: 12px; color: var(--muted); }
+
+  /* CTA SECTION */
+  .cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, #0f0f0f 0%, #150a00 100%);
+    border-top: 1px solid #1e1e1e;
+    border-bottom: 1px solid #1e1e1e;
+    position: relative; overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(255,92,0,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-section h2 {
+    font-family: var(--font-head); font-size: clamp(32px, 5vw, 56px);
+    font-weight: 800; letter-spacing: -1.5px; margin-bottom: 20px;
+    position: relative;
+  }
+  .cta-section h2 em { color: var(--accent); font-style: normal; }
+  .cta-section p { font-size: 17px; color: #888; max-width: 500px; margin: 0 auto 40px; font-weight: 300; }
+  .cta-features {
+    display: flex; justify-content: center; gap: 32px;
+    flex-wrap: wrap; margin-top: 32px;
+  }
+  .cta-feature { font-size: 13px; color: #666; display: flex; align-items: center; gap: 8px; }
+  .cta-feature::before { content: '✓'; color: var(--accent); font-weight: 700; }
+
+  /* FAQ */
+  .faq-list { margin-top: 56px; }
+  .faq-item {
+    border-bottom: 1px solid #1a1a1a;
+    overflow: hidden;
+  }
+  .faq-question {
+    width: 100%; background: none; border: none; color: var(--white);
+    font-family: var(--font-body); font-size: 16px; font-weight: 500;
+    text-align: left; padding: 24px 0;
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    gap: 16px;
+  }
+  .faq-question:hover { color: var(--accent); }
+  .faq-arrow { color: var(--accent); font-size: 20px; flex-shrink: 0; transition: transform 0.3s; }
+  .faq-arrow.open { transform: rotate(45deg); }
+  .faq-answer { font-size: 15px; color: #888; line-height: 1.7; padding-bottom: 24px; max-width: 680px; }
+
+  /* FOOTER */
+  footer {
+    padding: 48px 0; border-top: 1px solid #1a1a1a;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { font-family: var(--font-head); font-weight: 800; font-size: 16px; }
+  .footer-logo span { color: var(--accent); }
+  .footer-note { font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 640px) {
+    .problems-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 1px solid #1e1e1e; padding: 20px 0; }
+    .stat-item:last-child { border-bottom: none; }
+    .solution-num { font-size: 32px; min-width: 40px; }
+    footer { flex-direction: column; text-align: center; }
+  }
+`;
 
 const features = [
-  {
-    icon: "🤖",
-    title: "AI-Powered CRM",
-    desc: "Smart contact management with AI that scores leads, predicts churn, and surfaces your hottest opportunities automatically.",
-  },
-  {
-    icon: "📣",
-    title: "Omni-Channel Marketing",
-    desc: "Email, SMS, WhatsApp, Facebook, Google Ads — build and automate every campaign from one unified dashboard.",
-  },
-  {
-    icon: "🔁",
-    title: "Drag-and-Drop Automation",
-    desc: "Visual workflow builder lets you create complex nurture sequences, follow-ups, and pipelines without writing a single line of code.",
-  },
-  {
-    icon: "📅",
-    title: "Appointment Booking",
-    desc: "Calendars, reminders, round-robin routing, and automated confirmations — zero no-shows, zero manual scheduling.",
-  },
-  {
-    icon: "🌐",
-    title: "Funnels & Websites",
-    desc: "High-converting landing pages and full websites with built-in A/B testing, payment gateways, and form builders.",
-  },
-  {
-    icon: "⭐",
-    title: "Reputation Management",
-    desc: "Auto-request Google and Facebook reviews after every job. Monitor and respond to reviews without leaving GHL.",
-  },
-  {
-    icon: "📊",
-    title: "Reporting & Analytics",
-    desc: "Real-time dashboards for ad spend, pipeline value, conversion rates, and team performance — all in one view.",
-  },
-  {
-    icon: "🏷️",
-    title: "White-Label & Resell",
-    desc: "Rebrand GHL as your own SaaS. Charge clients monthly and keep 100% of the revenue — unlimited sub-accounts.",
-  },
+  { icon: "⚡", title: "All-in-One CRM", desc: "Contacts, pipelines, appointments, and deals — all in one place. No more juggling 5 different tools." },
+  { icon: "🤖", title: "Smart Automation", desc: "Build workflows that follow up with leads automatically via SMS, email, and voicemail — 24/7 without you." },
+  { icon: "📱", title: "White-Label Ready", desc: "Rebrand GoHighLevel as your own SaaS product. Charge clients monthly and build recurring revenue." },
+  { icon: "🌐", title: "Website & Funnel Builder", desc: "Drag-and-drop landing pages and funnels that convert. No Clickfunnels or WordPress needed." },
+  { icon: "📅", title: "Booking & Calendar", desc: "Clients book directly into your calendar. Automated reminders cut no-shows by up to 80%." },
+  { icon: "📊", title: "Reporting Dashboard", desc: "See exactly which campaigns bring revenue. Prove your ROI to clients with one clean dashboard." },
 ];
 
-const testimonials = [
-  {
-    name: "Rahul M.",
-    role: "Digital Marketing Agency, Mumbai",
-    quote:
-      "We replaced 7 tools with GHL. Our team saves 20+ hours per week and our client retention jumped 40% in 3 months.",
-    stars: 5,
-  },
-  {
-    name: "Sarah K.",
-    role: "Local Business Coach, UK",
-    quote:
-      "The automation alone is worth every penny. My sales pipeline runs on autopilot while I focus on coaching my clients.",
-    stars: 5,
-  },
-  {
-    name: "James T.",
-    role: "E-commerce Consultant, US",
-    quote:
-      "GHL's white-label feature turned my agency into a SaaS business. I now have 30 paying clients on my own branded platform.",
-    stars: 5,
-  },
+const problems = [
+  { title: "Losing leads daily", desc: "You run ads, get enquiries, then forget to follow up. Those leads go cold and your ad spend is wasted." },
+  { title: "Too many tools, too much cost", desc: "Paying for CRM + email tool + funnel builder + booking app + analytics = ₹30,000+/month in subscriptions." },
+  { title: "Manual follow-ups killing time", desc: "You spend hours sending the same messages to leads instead of closing deals or doing client work." },
+  { title: "No system for client reporting", desc: "Clients ask 'what results am I getting?' and you scramble to pull numbers from 4 different platforms." },
+  { title: "Can't scale without hiring", desc: "Every new client means more manual work. You hit a ceiling because your business runs on you, not systems." },
+  { title: "Inconsistent client results", desc: "Without automation, results depend on how much time you have that week. Inconsistency loses clients." },
 ];
 
-const compared = [
-  { tool: "HubSpot CRM", price: "$800+/mo", ghl: "✅ Included" },
-  { tool: "ActiveCampaign", price: "$149/mo", ghl: "✅ Included" },
-  { tool: "Clickfunnels", price: "$197/mo", ghl: "✅ Included" },
-  { tool: "Calendly Pro", price: "$16/mo", ghl: "✅ Included" },
-  { tool: "Birdeye (Reviews)", price: "$299/mo", ghl: "✅ Included" },
-  { tool: "Twilio SMS", price: "$25+/mo", ghl: "✅ Included" },
+const solutions = [
+  { title: "One platform replaces everything", desc: "GHL replaces your CRM, email marketing, funnel builder, booking system, and reporting tool. One login, one monthly fee.", badge: "Saves ₹25,000+/month in tools" },
+  { title: "Automated follow-up sequences", desc: "Set up once: when a lead comes in, GHL automatically sends SMS, email, and even voicemail drops — until they respond or opt out.", badge: "10x lead response rate" },
+  { title: "Sell GHL as your own product", desc: "White-label the entire platform under your brand. Charge clients ₹5,000–₹20,000/month for access. Pure profit.", badge: "New recurring revenue stream" },
+  { title: "Client reporting on autopilot", desc: "Every client gets a live dashboard showing their leads, bookings, and campaign results. No more manual reports.", badge: "Retain clients 3x longer" },
 ];
 
-export default function GHL() {
-  const [scrolled, setScrolled] = useState(false);
-  const [visible, setVisible] = useState({});
+const reviews = [
+  { text: "I replaced 6 tools with GHL and cut my monthly software cost by ₹18,000. My leads now get followed up automatically — I closed 3 deals while sleeping.", name: "Arjun S.", role: "Digital Marketing Agency, Mumbai", initials: "AS" },
+  { text: "The white-label feature changed everything. I now have 12 clients paying me £299/month each for 'my' CRM software. GoHighLevel is the backend.", name: "Marcus T.", role: "Agency Owner, Manchester UK", initials: "MT" },
+  { text: "My show-up rate for sales calls went from 40% to 78% after setting up GHL's automated reminder sequences. That alone paid for the tool 10x over.", name: "Priya K.", role: "Freelance Funnel Builder, Bangalore", initials: "PK" },
+  { text: "I was sceptical at first. Within 2 weeks of setting up automations, I recovered 4 dead leads that turned into paying clients. Unreal.", name: "David O.", role: "Growth Consultant, Lagos", initials: "DO" },
+  { text: "Clients used to cancel when they didn't 'see results.' Now they log into their dashboard daily. Churn dropped to almost zero.", name: "Sarah M.", role: "Social Media Agency, London", initials: "SM" },
+  { text: "As a solo freelancer, GHL let me operate like an agency. I handle 8 clients with the same effort I used to spend on 2. Game changer.", name: "Rohan V.", role: "Freelancer, Pune", initials: "RV" },
+];
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+const faqs = [
+  { q: "What exactly is GoHighLevel?", a: "GoHighLevel (GHL) is an all-in-one marketing and CRM platform built specifically for digital marketing agencies and freelancers. It combines CRM, email marketing, SMS automation, funnel building, appointment booking, and client reporting into one platform." },
+  { q: "How much does GoHighLevel cost?", a: "GHL starts at $97/month for the Starter plan and $297/month for the Agency Unlimited plan — which lets you add unlimited client accounts. Most agency owners make this back within the first month by either saving on tools or reselling access to clients." },
+  { q: "I'm not technical — can I still use it?", a: "Yes. GHL has drag-and-drop builders, pre-built automation templates, and an active community with thousands of tutorials. Most users are up and running within a week without any coding knowledge." },
+  { q: "Can I white-label it and sell it as my own?", a: "Absolutely — this is one of GHL's most powerful features. On the Agency plan you can brand the entire platform with your logo, domain, and colours, then charge your clients monthly for access. Many agency owners generate ₹1–5L/month in pure recurring revenue this way." },
+  { q: "Is there a free trial?", a: "Yes — GoHighLevel offers a 14-day free trial with full access to all features. No credit card required to start. You can click the button below to start your trial." },
+  { q: "Does it work for freelancers or only agencies?", a: "Both. Freelancers use GHL to manage their own lead generation and client delivery. Agencies use it to manage multiple clients, automate reporting, and resell the platform. Whether you have 1 client or 100, GHL scales with you." },
+  { q: "What's the difference between GHL and other CRMs like HubSpot?", a: "HubSpot and Salesforce are built for enterprise sales teams. GHL is built for digital marketers — it includes funnel builders, SMS/email automation, reputation management, and white-labelling that those platforms don't offer (or charge 10x more for)." },
+];
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setVisible((prev) => ({ ...prev, [e.target.dataset.id]: true }));
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    document.querySelectorAll("[data-id]").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  const reveal = (id) =>
-    visible[id] ? "ghl-reveal ghl-revealed" : "ghl-reveal";
+export default function GHLPage() {
+  const [openFaq, setOpenFaq] = useState(null);
 
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+      <style>{styles}</style>
 
-        :root {
-          --gold: #F5C518;
-          --gold-light: #FFE168;
-          --gold-dark: #C9A000;
-          --bg: #080B10;
-          --surface: #0E1420;
-          --surface2: #141C2E;
-          --border: rgba(245,197,24,0.15);
-          --text: #E8EAF0;
-          --muted: #8A91A8;
-          --accent: #F5C518;
-        }
+      <nav>
+        <div className="nav-logo">MultiverseAIApp</div>
+        <a href="https://www.gohighlevel.com/?fp_ref=guruprasad57" className="nav-cta" target="_blank" rel="noopener noreferrer">
+          Start Free Trial →
+        </a>
+      </nav>
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        .ghl-wrap {
-          font-family: 'DM Sans', sans-serif;
-          background: var(--bg);
-          color: var(--text);
-          overflow-x: hidden;
-          min-height: 100vh;
-        }
-
-        /* NAV */
-        .ghl-nav {
-          position: fixed; top: 0; left: 0; right: 0;
-          z-index: 100;
-          padding: 18px 6%;
-          display: flex; align-items: center; justify-content: space-between;
-          transition: background 0.4s, backdrop-filter 0.4s, border-bottom 0.4s;
-        }
-        .ghl-nav.scrolled {
-          background: rgba(8,11,16,0.9);
-          backdrop-filter: blur(14px);
-          border-bottom: 1px solid var(--border);
-        }
-        .ghl-nav-logo {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.6rem;
-          letter-spacing: 2px;
-          color: var(--gold);
-        }
-        .ghl-nav-logo span { color: #fff; }
-        .ghl-nav-cta {
-          text-decoration: none;
-          background: var(--gold);
-          color: #080B10;
-          font-family: 'Syne', sans-serif;
-          font-weight: 700;
-          font-size: 0.82rem;
-          letter-spacing: 0.05em;
-          padding: 10px 22px;
-          border-radius: 6px;
-          transition: all 0.2s;
-        }
-        .ghl-nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-        /* HERO */
-        .ghl-hero {
-          min-height: 100vh;
-          display: flex; flex-direction: column;
-          align-items: center; justify-content: center;
-          text-align: center;
-          padding: 120px 6% 80px;
-          position: relative;
-          overflow: hidden;
-        }
-        .ghl-hero::before {
-          content: '';
-          position: absolute;
-          top: -200px; left: 50%; transform: translateX(-50%);
-          width: 900px; height: 900px;
-          background: radial-gradient(circle, rgba(245,197,24,0.08) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .ghl-hero-badge {
-          display: inline-flex; align-items: center; gap: 8px;
-          background: rgba(245,197,24,0.1);
-          border: 1px solid rgba(245,197,24,0.3);
-          border-radius: 100px;
-          padding: 6px 18px;
-          font-family: 'Syne', sans-serif;
-          font-size: 0.78rem;
-          font-weight: 600;
-          letter-spacing: 0.08em;
-          color: var(--gold);
-          margin-bottom: 32px;
-          text-transform: uppercase;
-        }
-        .ghl-badge-dot {
-          width: 6px; height: 6px;
-          background: var(--gold);
-          border-radius: 50%;
-          animation: pulse-dot 2s ease-in-out infinite;
-        }
-        @keyframes pulse-dot {
-          0%,100%{ opacity:1; transform:scale(1); }
-          50%{ opacity:0.5; transform:scale(1.4); }
-        }
-        .ghl-hero h1 {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(3.5rem, 9vw, 7.5rem);
-          line-height: 0.95;
-          letter-spacing: 0.02em;
-          color: #fff;
-          margin-bottom: 24px;
-        }
-        .ghl-hero h1 .gold { color: var(--gold); }
-        .ghl-hero-sub {
-          font-size: clamp(1rem, 2vw, 1.2rem);
-          color: var(--muted);
-          max-width: 600px;
-          line-height: 1.7;
-          margin-bottom: 48px;
-        }
-        .ghl-hero-sub strong { color: var(--text); font-weight: 500; }
-        .ghl-hero-ctas {
-          display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
-          margin-bottom: 70px;
-        }
-        .ghl-btn-primary {
-          display: inline-flex; align-items: center; gap: 10px;
-          text-decoration: none;
-          background: var(--gold);
-          color: #080B10;
-          font-family: 'Syne', sans-serif;
-          font-weight: 800;
-          font-size: 1rem;
-          padding: 18px 36px;
-          border-radius: 8px;
-          transition: all 0.25s;
-          box-shadow: 0 0 40px rgba(245,197,24,0.25);
-        }
-        .ghl-btn-primary:hover {
-          background: var(--gold-light);
-          transform: translateY(-3px);
-          box-shadow: 0 0 60px rgba(245,197,24,0.4);
-        }
-        .ghl-btn-secondary {
-          display: inline-flex; align-items: center; gap: 10px;
-          text-decoration: none;
-          border: 1px solid var(--border);
-          color: var(--text);
-          font-family: 'Syne', sans-serif;
-          font-weight: 600;
-          font-size: 1rem;
-          padding: 18px 36px;
-          border-radius: 8px;
-          transition: all 0.25s;
-        }
-        .ghl-btn-secondary:hover {
-          border-color: rgba(245,197,24,0.5);
-          color: var(--gold);
-        }
-        .ghl-hero-stats {
-          display: flex; gap: 48px; flex-wrap: wrap; justify-content: center;
-        }
-        .ghl-stat { text-align: center; }
-        .ghl-stat-num {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 2.8rem;
-          color: var(--gold);
-          line-height: 1;
-        }
-        .ghl-stat-label { font-size: 0.82rem; color: var(--muted); margin-top: 4px; letter-spacing: 0.05em; }
-
-        /* SECTION COMMONS */
-        .ghl-section {
-          padding: 100px 6%;
-        }
-        .ghl-section-label {
-          font-family: 'Syne', sans-serif;
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: var(--gold);
-          margin-bottom: 14px;
-        }
-        .ghl-section-title {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(2.4rem, 5vw, 4rem);
-          line-height: 1;
-          color: #fff;
-          margin-bottom: 16px;
-          letter-spacing: 0.02em;
-        }
-        .ghl-section-sub {
-          color: var(--muted);
-          max-width: 560px;
-          line-height: 1.7;
-          font-size: 1rem;
-        }
-        .ghl-section-header { margin-bottom: 60px; }
-        .ghl-section-header.center { text-align: center; }
-        .ghl-section-header.center .ghl-section-sub { margin: 0 auto; }
-
-        /* FEATURES GRID */
-        .ghl-features-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 20px;
-        }
-        .ghl-feat-card {
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 14px;
-          padding: 32px 28px;
-          transition: all 0.3s;
-        }
-        .ghl-feat-card:hover {
-          border-color: rgba(245,197,24,0.4);
-          transform: translateY(-6px);
-          box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-        }
-        .ghl-feat-icon { font-size: 2rem; margin-bottom: 16px; }
-        .ghl-feat-title {
-          font-family: 'Syne', sans-serif;
-          font-weight: 700;
-          font-size: 1.05rem;
-          color: #fff;
-          margin-bottom: 10px;
-        }
-        .ghl-feat-desc { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
-
-        /* COMPARISON */
-        .ghl-compare-wrap {
-          max-width: 900px; margin: 0 auto;
-        }
-        .ghl-compare-table {
-          width: 100%;
-          border-collapse: collapse;
-          border: 1px solid var(--border);
-          border-radius: 14px;
-          overflow: hidden;
-        }
-        .ghl-compare-table thead {
-          background: var(--surface2);
-        }
-        .ghl-compare-table th {
-          padding: 18px 24px;
-          font-family: 'Syne', sans-serif;
-          font-weight: 700;
-          font-size: 0.85rem;
-          letter-spacing: 0.06em;
-          text-transform: uppercase;
-          color: var(--muted);
-          text-align: left;
-        }
-        .ghl-compare-table th:last-child { color: var(--gold); }
-        .ghl-compare-table td {
-          padding: 16px 24px;
-          border-top: 1px solid var(--border);
-          font-size: 0.95rem;
-          color: var(--text);
-        }
-        .ghl-compare-table tr:hover td { background: rgba(245,197,24,0.03); }
-        .ghl-compare-table .price { color: #F87171; font-weight: 500; }
-        .ghl-compare-table .included { color: #4ADE80; font-weight: 600; }
-        .ghl-compare-total {
-          margin-top: 20px;
-          display: flex; justify-content: space-between; align-items: center;
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 10px;
-          padding: 20px 24px;
-        }
-        .ghl-compare-total-label {
-          font-family: 'Syne', sans-serif; font-weight: 700;
-          font-size: 0.9rem; color: var(--muted);
-        }
-        .ghl-compare-total-val { font-size: 1.4rem; font-weight: 600; }
-        .ghl-compare-total-val .cross { text-decoration: line-through; color: #F87171; margin-right: 12px; }
-        .ghl-compare-total-val .ghl-price { color: var(--gold); font-family: 'Bebas Neue'; font-size: 1.8rem; letter-spacing: 0.04em; }
-
-        /* TESTIMONIALS */
-        .ghl-testimonials {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 20px;
-        }
-        .ghl-testi-card {
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 14px;
-          padding: 32px 28px;
-          transition: all 0.3s;
-        }
-        .ghl-testi-card:hover { border-color: rgba(245,197,24,0.4); }
-        .ghl-stars { color: var(--gold); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
-        .ghl-testi-quote {
-          color: var(--text);
-          font-size: 0.97rem;
-          line-height: 1.7;
-          font-style: italic;
-          margin-bottom: 24px;
-        }
-        .ghl-testi-name {
-          font-family: 'Syne', sans-serif;
-          font-weight: 700; font-size: 0.9rem; color: #fff;
-        }
-        .ghl-testi-role { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
-
-        /* CTA SECTION */
-        .ghl-cta-section {
-          padding: 120px 6%;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-        }
-        .ghl-cta-section::before {
-          content: '';
-          position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-          width: 700px; height: 700px;
-          background: radial-gradient(circle, rgba(245,197,24,0.07) 0%, transparent 70%);
-          pointer-events: none;
-        }
-        .ghl-cta-box {
-          max-width: 760px; margin: 0 auto;
-          position: relative; z-index: 1;
-        }
-        .ghl-cta-box h2 {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: clamp(2.8rem, 7vw, 5.5rem);
-          line-height: 1;
-          color: #fff;
-          margin-bottom: 20px;
-        }
-        .ghl-cta-box h2 .gold { color: var(--gold); }
-        .ghl-cta-box p { color: var(--muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 40px; }
-        .ghl-cta-note { margin-top: 20px; font-size: 0.82rem; color: var(--muted); }
-        .ghl-cta-note span { color: #4ADE80; }
-
-        /* FOOTER */
-        .ghl-footer {
-          border-top: 1px solid var(--border);
-          padding: 30px 6%;
-          display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-        }
-        .ghl-footer-logo {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.2rem; letter-spacing: 2px; color: var(--gold);
-        }
-        .ghl-footer-logo span { color: #fff; }
-        .ghl-footer-copy { font-size: 0.8rem; color: var(--muted); }
-        .ghl-footer-disclaimer {
-          font-size: 0.73rem; color: var(--muted); opacity: 0.6;
-          max-width: 100%; text-align: center; padding: 0 6% 20px;
-        }
-
-        /* DIVIDER */
-        .ghl-divider {
-          height: 1px; background: var(--border); margin: 0 6%;
-        }
-
-        /* REVEAL ANIMATION */
-        .ghl-reveal {
-          opacity: 0; transform: translateY(30px);
-          transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .ghl-reveal.ghl-revealed { opacity: 1; transform: none; }
-
-        /* STAGGER */
-        .ghl-stagger > *:nth-child(1) { transition-delay: 0s; }
-        .ghl-stagger > *:nth-child(2) { transition-delay: 0.08s; }
-        .ghl-stagger > *:nth-child(3) { transition-delay: 0.16s; }
-        .ghl-stagger > *:nth-child(4) { transition-delay: 0.24s; }
-        .ghl-stagger > *:nth-child(5) { transition-delay: 0.32s; }
-        .ghl-stagger > *:nth-child(6) { transition-delay: 0.40s; }
-        .ghl-stagger > *:nth-child(7) { transition-delay: 0.48s; }
-        .ghl-stagger > *:nth-child(8) { transition-delay: 0.56s; }
-
-        @media (max-width: 640px) {
-          .ghl-hero h1 { font-size: 3.2rem; }
-          .ghl-hero-stats { gap: 28px; }
-          .ghl-footer { flex-direction: column; text-align: center; }
-        }
-      `}</style>
-
-      <div className="ghl-wrap">
-        {/* NAV */}
-        <nav className={`ghl-nav ${scrolled ? "scrolled" : ""}`}>
-          <div className="ghl-nav-logo">HighLevel<span>HQ</span></div>
-          <a href={GHL_LINK} target="_blank" rel="noopener noreferrer" className="ghl-nav-cta">
-            Start Free Trial →
-          </a>
-        </nav>
-
-        {/* HERO */}
-        <section className="ghl-hero">
-          <div className="ghl-hero-badge">
-            <span className="ghl-badge-dot" />
-            #1 Platform for Marketing Agencies
-          </div>
+      {/* HOOK */}
+      <section className="hook">
+        <div className="page">
+          <div className="hook-tag">For Digital Marketers & Agency Owners</div>
           <h1>
-            REPLACE <span className="gold">10 TOOLS.</span><br />
-            RUN ONE PLATFORM.
+            Stop running your<br />
+            agency on <em>chaos.</em><br />
+            <span className="line2">Build it on systems.</span>
           </h1>
-          <p className="ghl-hero-sub">
-            GoHighLevel gives agencies and freelancers <strong>CRM, automation, funnels, booking, email, SMS, reputation management</strong> — everything in one roof. Stop paying for 10 tools. Start scaling.
+          <p className="hook-sub">
+            GoHighLevel is the <strong>all-in-one platform</strong> that replaces your CRM, email tool, funnel builder, booking app, and reporting dashboard — so you can scale without burning out.
           </p>
-          <div className="ghl-hero-ctas">
-            <a href={GHL_LINK} target="_blank" rel="noopener noreferrer" className="ghl-btn-primary">
-              🚀 Start 14-Day Free Trial
+          <div className="cta-group">
+            <a href="https://www.gohighlevel.com/?fp_ref=guruprasad57" className="btn-primary" target="_blank" rel="noopener noreferrer">
+              Start Your 14-Day Free Trial
             </a>
-            <a href="#features" className="ghl-btn-secondary">
-              See What's Inside ↓
-            </a>
+            <button className="btn-ghost" onClick={() => document.getElementById('features').scrollIntoView({ behavior: 'smooth' })}>
+              See What's Inside
+            </button>
           </div>
-          <div className="ghl-hero-stats">
-            <div className="ghl-stat">
-              <div className="ghl-stat-num">60K+</div>
-              <div className="ghl-stat-label">Agencies Using GHL</div>
-            </div>
-            <div className="ghl-stat">
-              <div className="ghl-stat-num">$1,400</div>
-              <div className="ghl-stat-label">Avg. Monthly Savings</div>
-            </div>
-            <div className="ghl-stat">
-              <div className="ghl-stat-num">14</div>
-              <div className="ghl-stat-label">Days Free — No Card Needed</div>
-            </div>
-          </div>
-        </section>
+          <p className="hook-note">No credit card required · Cancel anytime · Full access from day 1</p>
+        </div>
+      </section>
 
-        <div className="ghl-divider" />
-
-        {/* FEATURES */}
-        <section className="ghl-section" id="features">
-          <div className={`ghl-section-header center ${reveal("feat-header")}`} data-id="feat-header">
-            <div className="ghl-section-label">Everything You Need</div>
-            <div className="ghl-section-title">ONE PLATFORM.<br />INFINITE LEVERAGE.</div>
-            <p className="ghl-section-sub">
-              GoHighLevel replaces your entire marketing stack. Here's what's waiting inside your account.
-            </p>
+      {/* STATS */}
+      <div className="page">
+        <div className="stats-bar">
+          <div className="stat-item">
+            <div className="stat-num">60K+</div>
+            <div className="stat-label">Agencies using GHL worldwide</div>
           </div>
-          <div className={`ghl-features-grid ghl-stagger ${reveal("feat-grid")}`} data-id="feat-grid">
+          <div className="stat-item">
+            <div className="stat-num">6-in-1</div>
+            <div className="stat-label">Tools replaced in one platform</div>
+          </div>
+          <div className="stat-item">
+            <div className="stat-num">14 days</div>
+            <div className="stat-label">Free trial — no card needed</div>
+          </div>
+        </div>
+      </div>
+
+      {/* FEATURES */}
+      <section id="features">
+        <div className="page">
+          <div className="section-tag">Key Features</div>
+          <h2 className="section-title">Everything your agency needs.<br />Nothing it doesn't.</h2>
+          <p className="section-sub">Six platforms in one subscription. One login. One dashboard. One monthly fee that pays for itself.</p>
+          <div className="features-grid">
             {features.map((f, i) => (
-              <div className="ghl-feat-card" key={i}>
-                <div className="ghl-feat-icon">{f.icon}</div>
-                <div className="ghl-feat-title">{f.title}</div>
-                <div className="ghl-feat-desc">{f.desc}</div>
+              <div className="feature-card" key={i}>
+                <div className="feature-icon">{f.icon}</div>
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <div className="ghl-divider" />
-
-        {/* COMPARISON */}
-        <section className="ghl-section">
-          <div className={`ghl-section-header center ${reveal("comp-header")}`} data-id="comp-header">
-            <div className="ghl-section-label">Cost Comparison</div>
-            <div className="ghl-section-title">WHY PAY MORE<br />FOR LESS?</div>
-            <p className="ghl-section-sub">
-              See how much agencies are burning on fragmented tools — and what GHL consolidates for you.
-            </p>
-          </div>
-          <div className={`ghl-compare-wrap ${reveal("comp-table")}`} data-id="comp-table">
-            <table className="ghl-compare-table">
-              <thead>
-                <tr>
-                  <th>Tool</th>
-                  <th>Their Price</th>
-                  <th>With GHL</th>
-                </tr>
-              </thead>
-              <tbody>
-                {compared.map((r, i) => (
-                  <tr key={i}>
-                    <td>{r.tool}</td>
-                    <td className="price">{r.price}</td>
-                    <td className="included">{r.ghl}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="ghl-compare-total">
-              <div className="ghl-compare-total-label">Your Monthly Savings</div>
-              <div className="ghl-compare-total-val">
-                <span className="cross">$1,486+/mo</span>
-                <span className="ghl-price">GHL from $97/mo</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div className="ghl-divider" />
-
-        {/* TESTIMONIALS */}
-        <section className="ghl-section">
-          <div className={`ghl-section-header center ${reveal("testi-header")}`} data-id="testi-header">
-            <div className="ghl-section-label">Real Results</div>
-            <div className="ghl-section-title">AGENCIES LOVE IT.<br />CLIENTS STAY LONGER.</div>
-          </div>
-          <div className={`ghl-testimonials ghl-stagger ${reveal("testi-grid")}`} data-id="testi-grid">
-            {testimonials.map((t, i) => (
-              <div className="ghl-testi-card" key={i}>
-                <div className="ghl-stars">{"★".repeat(t.stars)}</div>
-                <div className="ghl-testi-quote">"{t.quote}"</div>
-                <div className="ghl-testi-name">{t.name}</div>
-                <div className="ghl-testi-role">{t.role}</div>
+      {/* PROBLEMS */}
+      <section className="problems-section">
+        <div className="page">
+          <div className="section-tag">The Problem</div>
+          <h2 className="section-title">Sound familiar?</h2>
+          <p className="section-sub">These are the exact problems killing most digital marketing agencies and freelancers right now.</p>
+          <div className="problems-grid">
+            {problems.map((p, i) => (
+              <div className="problem-card" key={i}>
+                <h4>✗ {p.title}</h4>
+                <p>{p.desc}</p>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <div className="ghl-divider" />
-
-        {/* CTA */}
-        <section className="ghl-cta-section">
-          <div className={`ghl-cta-box ${reveal("cta-box")}`} data-id="cta-box">
-            <div className="ghl-section-label" style={{ marginBottom: "14px" }}>Limited Time Offer</div>
-            <h2>STOP PAYING<br /><span className="gold">FOR 10 TOOLS.</span></h2>
-            <p>
-              Your 14-day free trial starts the moment you sign up. No credit card required. Cancel anytime. Try the full platform, white-label it, resell it, or simply use it to 10x your agency — the choice is yours.
-            </p>
-            <a href={GHL_LINK} target="_blank" rel="noopener noreferrer" className="ghl-btn-primary" style={{ fontSize: "1.15rem", padding: "20px 48px" }}>
-              🔥 Claim My Free 14-Day Trial
-            </a>
-            <div className="ghl-cta-note">
-              <span>✓</span> No credit card &nbsp;|&nbsp; <span>✓</span> Full access &nbsp;|&nbsp; <span>✓</span> Cancel anytime
-            </div>
+      {/* SOLUTION */}
+      <section>
+        <div className="page">
+          <div className="section-tag">The Solution</div>
+          <h2 className="section-title">How GoHighLevel fixes all of it</h2>
+          <p className="section-sub">One platform, built specifically for marketers, that solves every problem above — permanently.</p>
+          <div className="solution-list">
+            {solutions.map((s, i) => (
+              <div className="solution-item" key={i}>
+                <div className="solution-num">0{i + 1}</div>
+                <div className="solution-content">
+                  <h3>{s.title}</h3>
+                  <p>{s.desc}</p>
+                  <span className="solution-badge">{s.badge}</span>
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* FOOTER */}
-        <footer className="ghl-footer">
-          <div className="ghl-footer-logo">HighLevel<span>HQ</span></div>
-          <div className="ghl-footer-copy">© {new Date().getFullYear()} HighLevelHQ. All rights reserved.</div>
+      {/* REVIEWS */}
+      <section className="reviews-section">
+        <div className="page">
+          <div className="section-tag">Real Reviews</div>
+          <h2 className="section-title">What agency owners are saying</h2>
+          <p className="section-sub">From freelancers in Bangalore to agency owners in London — here's what changed after switching to GHL.</p>
+          <div className="reviews-grid">
+            {reviews.map((r, i) => (
+              <div className="review-card" key={i}>
+                <div className="stars">★★★★★</div>
+                <p className="review-text">"{r.text}"</p>
+                <div className="review-author">
+                  <div className="avatar">{r.initials}</div>
+                  <div>
+                    <div className="author-name">{r.name}</div>
+                    <div className="author-role">{r.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="cta-section">
+        <div className="page">
+          <div className="section-tag">Get Started Today</div>
+          <h2>Ready to build an agency<br />that runs on <em>systems?</em></h2>
+          <p>Join 60,000+ marketers who replaced chaos with GoHighLevel. Your 14-day free trial starts the moment you click.</p>
+          <a href="https://www.gohighlevel.com/?fp_ref=guruprasad57" className="btn-primary" target="_blank" rel="noopener noreferrer" style={{ fontSize: '17px', padding: '18px 40px' }}>
+            Start Free Trial — No Card Needed →
+          </a>
+          <div className="cta-features">
+            <span className="cta-feature">Full platform access</span>
+            <span className="cta-feature">Cancel anytime</span>
+            <span className="cta-feature">Setup in under 1 hour</span>
+            <span className="cta-feature">No technical skills needed</span>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section>
+        <div className="page">
+          <div className="section-tag">FAQ</div>
+          <h2 className="section-title">Questions before you start?</h2>
+          <p className="section-sub">Everything you need to know about GoHighLevel before your free trial.</p>
+          <div className="faq-list">
+            {faqs.map((f, i) => (
+              <div className="faq-item" key={i}>
+                <button className="faq-question" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                  {f.q}
+                  <span className={`faq-arrow ${openFaq === i ? 'open' : ''}`}>+</span>
+                </button>
+                {openFaq === i && <p className="faq-answer">{f.a}</p>}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <div className="page">
+        <footer>
+          <div className="footer-logo">MultiverseAIApp</div>
         </footer>
-        {/* <p className="ghl-footer-disclaimer">
-          This page contains affiliate links. We may earn a commission if you sign up through our link, at no extra cost to you.
-        </p> */}
       </div>
     </>
   );
