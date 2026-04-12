@@ -12,7 +12,7 @@ body {
 
 /* HERO */
 .hero {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 80px 10%;
@@ -33,7 +33,7 @@ body {
 .hero h1 span { color: #818cf8; }
 
 .hero p {
-  color: #cbd5f5;
+  /* color: #cbd5f5; */
   max-width: 520px;
   line-height: 1.7;
   margin-bottom: 30px;
