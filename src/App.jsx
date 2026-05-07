@@ -9,12 +9,17 @@ export default function App() {
     const path = window.location.pathname;
 
     if (path === "/ghl" || path === "/automation") {
-      window.location.href = "https://www.gohighlevel.com/?fp_ref=guruprasad57";
+      window.location.replace(
+        "https://www.gohighlevel.com/?fp_ref=guruprasad57"
+      );
     } else if (path === "/book-sales-rocket") {
-      window.location.href = "https://warriorplus.com/o2/a/j4cr1bz/0";
-    }
-    else {
-      window.location.href = "https://warriorplus.com/o2/a/hffvq05/0";
+      window.location.replace(
+        "https://warriorplus.com/o2/a/j4cr1bz/0"
+      );
+    } else {
+      window.location.replace(
+        "https://warriorplus.com/o2/a/hffvq05/0"
+      );
     }
   }, []);
   // return (
