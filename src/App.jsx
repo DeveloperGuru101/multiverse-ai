@@ -12,7 +12,7 @@ export default function App() {
       window.location.replace(
         "https://www.gohighlevel.com/?fp_ref=guruprasad57"
       );
-    } else if (path === "/book-sales-rocket") {
+    } else if (path === "/booksales") {
       window.location.replace(
         "https://warriorplus.com/o2/a/j4cr1bz/0"
       );
