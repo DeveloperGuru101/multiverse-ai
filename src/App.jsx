@@ -8,8 +8,8 @@ export default function App() {
     // Redirect when page loads
     const path = window.location.pathname;
     
-    if (path === "/ghl" || path === "/automation") {
-      window.location.href = "https://www.gohighlevel.com/?fp_ref=guruprasad57";
+    if (path === "/systeme-tutorial" || path === "/all-in-one-business-platform") {
+      window.location.href = "https://systeme.io/?sa=sa0265282965e71650f1186b1a910b548b4b6d3618";
     } else {
       window.location.href = "https://warriorplus.com/o2/a/hffvq05/0";
     }
