@@ -1,0 +1,318 @@
+.guide-hero {
+  padding: 48px 0 12px;
+}
+
+.guide-wrap {
+  padding-bottom: 72px;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 0;
+  margin: 12px 0 20px;
+  padding: 0;
+  list-style: none;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: "/";
+  margin: 0 8px;
+  color: #475569;
+}
+
+.breadcrumbs a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.disclosure-box {
+  margin: 0 0 18px;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.glance dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 24px;
+  margin: 0;
+}
+
+.glance dt {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.glance dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.guide-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 36px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.guide-layout > *,
+.guide-body,
+.table-wrap,
+.toc-slot {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.toc-desktop {
+  position: sticky;
+  top: calc(var(--header) + 16px);
+  max-height: calc(100vh - var(--header) - 32px);
+  overflow: auto;
+}
+
+.toc-mobile {
+  display: none;
+}
+
+.toc-label {
+  margin: 0 0 10px;
+  color: var(--faint);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.toc a {
+  display: flex;
+  gap: 8px;
+  padding: 6px 0;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.toc a span {
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+}
+
+.guide-body section {
+  margin-top: 36px;
+  scroll-margin-top: calc(var(--header) + 16px);
+}
+
+.guide-body h2 {
+  margin-bottom: 12px;
+}
+
+.feature-grid p,
+.problem-card p,
+.price-plan p {
+  margin-bottom: 0;
+}
+
+.problem-card p + p,
+.price-plan .plain-list {
+  margin-top: 10px;
+}
+
+.price {
+  margin: 8px 0 12px;
+  color: var(--text);
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.price span {
+  color: var(--faint);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.price-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.inline-cta {
+  margin-top: 18px;
+}
+
+.stage-list {
+  margin: 18px 0 0;
+}
+
+.stage-list div + div {
+  margin-top: 12px;
+}
+
+.stage-list dt {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.stage-list dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.before-after {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.table-wrap {
+  width: 100%;
+  margin: 12px 0 16px;
+  overflow-x: auto;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.compare-table caption {
+  caption-side: bottom;
+  padding-top: 8px;
+  color: var(--faint);
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.compare-table th {
+  background: #0b1224;
+  color: var(--text);
+}
+
+.compare-table td {
+  color: var(--muted);
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.steps li {
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+
+.steps h3 {
+  margin-bottom: 6px;
+}
+
+.faq-list details {
+  border-top: 1px solid var(--border);
+}
+
+.faq-list summary {
+  padding: 14px 0;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.faq-list details p {
+  margin: 0 0 14px;
+}
+
+.guide-cta {
+  margin-top: 28px;
+  padding: 28px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #0b1224;
+}
+
+.author-box {
+  margin-top: 20px;
+}
+
+.featured-guide {
+  margin-bottom: 22px;
+}
+
+@media (max-width: 1100px) {
+  .price-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .guide-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .toc-desktop {
+    display: none;
+  }
+
+  .toc-mobile {
+    display: block;
+    margin-bottom: 8px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+  }
+
+  .toc-mobile summary {
+    padding: 14px 16px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .toc-mobile .toc {
+    padding: 0 16px 12px;
+  }
+
+  .before-after,
+  .glance dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .price-grid,
+  .guide-hero .actions .btn,
+  .inline-cta .btn,
+  .guide-cta .btn {
+    width: 100%;
+  }
+
+  .price-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-wrap {
+    padding-bottom: 48px;
+  }
+}

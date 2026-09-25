@@ -9,12 +9,16 @@
       "source": "/seo",
       "destination": "https://www.gohighlevel.com/?fp_ref=guruprasad57",
       "permanent": false
-    }
-  ],
-  "rewrites": [
+    },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "source": "/systeme-tutorial",
+      "destination": "/systeme",
+      "permanent": true
+    },
+    {
+      "source": "/all-in-one-business-platform",
+      "destination": "/systeme",
+      "permanent": true
     }
   ]
 }

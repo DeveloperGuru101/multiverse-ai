@@ -1,6 +1,13 @@
+import SeoHead from "../components/SeoHead";
+
 export default function Privacy() {
   return (
     <div style={s.page}>
+      <SeoHead
+        title="Privacy Policy | MultiverseAI"
+        description="How MultiverseAI handles basic visit data, cookies, analytics, and links to third-party software sites on multiverseaiapp.com."
+        path="/privacy"
+      />
 
       {/* NAV */}
       <nav style={s.nav}>

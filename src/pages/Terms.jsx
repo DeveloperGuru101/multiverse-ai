@@ -1,6 +1,13 @@
+import SeoHead from "../components/SeoHead";
+
 export default function Terms() {
   return (
     <div style={s.page}>
+      <SeoHead
+        title="Terms and Conditions | MultiverseAI"
+        description="The terms for using MultiverseAI, including affiliate links, site content, and acceptable use of the guides on multiverseaiapp.com."
+        path="/terms"
+      />
 
       {/* NAV */}
       <nav style={s.nav}>
