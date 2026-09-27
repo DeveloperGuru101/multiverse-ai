@@ -1,0 +1,58 @@
+.adcreative-verdict {
+  margin-top: 12px;
+}
+
+.adcreative-verdict h2 {
+  margin-bottom: 16px;
+}
+
+.adcreative-verdict dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 24px;
+  margin: 0;
+}
+
+.adcreative-verdict dt {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.adcreative-verdict dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.adcreative-author {
+  margin-top: 36px;
+}
+
+.adcreative-author h2 {
+  margin-bottom: 10px;
+}
+
+.adcreative-author a,
+.adcreative-related a {
+  overflow-wrap: anywhere;
+}
+
+.adcreative-guide .guide-cta {
+  margin-top: 36px;
+}
+
+.adcreative-guide .guide-cta p {
+  max-width: 68ch;
+}
+
+.adcreative-related {
+  margin-top: 36px;
+}
+
+@media (max-width: 767px) {
+  .adcreative-verdict dl {
+    grid-template-columns: 1fr;
+  }
+}

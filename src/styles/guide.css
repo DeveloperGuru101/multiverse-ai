@@ -316,3 +316,119 @@
     padding-bottom: 48px;
   }
 }
+
+.review-summary {
+  margin-top: 12px;
+}
+
+.review-summary-heading,
+.review-summary-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.review-summary-heading h2 {
+  margin: 0;
+}
+
+.review-summary .eyebrow {
+  margin-bottom: 4px;
+}
+
+.updated-note {
+  margin: 0;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.review-summary dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 24px;
+  margin: 20px 0;
+}
+
+.review-summary dt {
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.review-summary dd {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.review-summary-cta {
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.review-summary-cta p {
+  margin: 0;
+}
+
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.pros-card,
+.cons-card {
+  align-self: start;
+}
+
+.pros-card h3 {
+  color: #86efac;
+}
+
+.cons-card h3 {
+  color: #fcd34d;
+}
+
+.pricing-table {
+  min-width: 760px;
+}
+
+.pricing-footnote {
+  margin-top: 12px;
+  color: var(--faint);
+  font-size: 0.88rem;
+}
+
+.table-scroll-hint {
+  display: none;
+  margin: 8px 0 0;
+  color: var(--faint);
+  font-size: 0.82rem;
+}
+
+.author-box h2 {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+  .review-summary-heading,
+  .review-summary-cta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .review-summary-cta .btn {
+    width: 100%;
+  }
+
+  .review-summary dl,
+  .pros-cons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-scroll-hint {
+    display: block;
+  }
+}

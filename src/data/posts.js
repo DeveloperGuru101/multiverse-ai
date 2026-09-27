@@ -2,9 +2,10 @@ const posts = [
   {
     slug: "ai-tools",
     category: "AI Tools",
-    title: "How to choose AI tools that fit the work",
+    title: "How to Choose AI Tools for Work: A Practical Guide",
+    seoTitle: "How to Choose AI Tools for Work | MultiverseAI",
     description:
-      "A practical way to sort AI tools for writing, research, design, and everyday business tasks before you add another subscription.",
+      "Compare AI tools for writing, research, design, and business workflows. Use real tasks to assess accuracy, integrations, time saved, and subscription value.",
     sections: [
       {
         heading: "Start from the task, not the tool",
@@ -36,7 +37,7 @@ const posts = [
       {
         heading: "Where this fits on MultiverseAI",
         paragraphs: [
-          "Guides on this site will stay specific: what a tool does, where it belongs in a workflow, and what it does not do. Advertising creatives are one example. AdCreative.ai is an AI advertising tool for generating ad variations, not a general writing assistant.",
+          "Our guides focus on what a tool does, where it belongs in a workflow, and what it does not do. Advertising creatives are one example. AdCreative.ai is an AI advertising tool for generating ad variations, not a general writing assistant.",
         ],
       },
     ],
@@ -48,9 +49,10 @@ const posts = [
   {
     slug: "marketing",
     category: "Marketing",
-    title: "A practical marketing workflow",
+    title: "Digital Marketing Workflow: Ads, Landing Pages & Follow-Up",
+    seoTitle: "Digital Marketing Workflow: Ads & Follow-Up | MultiverseAI",
     description:
-      "How traffic, landing pages, advertising creatives, and follow-up fit together before you add more marketing software to the stack.",
+      "Build a practical digital marketing workflow from ad creative and landing page to email follow-up. See what each tool does and what to measure.",
     sections: [
       {
         heading: "One path from attention to a next step",
@@ -89,9 +91,10 @@ const posts = [
   {
     slug: "automation",
     category: "Automation",
-    title: "How to automate lead follow-up",
+    title: "Lead Follow-Up Automation: Email and CRM Workflow",
+    seoTitle: "Lead Follow-Up Automation: CRM & Email | MultiverseAI",
     description:
-      "A straightforward sequence from a new visitor to a captured lead, an email series, and a CRM record you can actually maintain.",
+      "Plan a lead follow-up automation workflow from form submission to email sequence and CRM task, with practical stop rules and human handoffs.",
     sections: [
       {
         heading: "Automate the repeat, keep the judgment",
@@ -135,9 +138,10 @@ const posts = [
   {
     slug: "agency-growth",
     category: "Agency Growth",
-    title: "Workflows for agencies and service businesses",
+    title: "Agency Workflow: CRM, Lead Management & Follow-Up",
+    seoTitle: "Agency Workflow: CRM & Lead Follow-Up | MultiverseAI",
     description:
-      "How leads, pipelines, appointments, and client follow-up fit together for freelancers and small marketing agencies.",
+      "Connect agency lead management, CRM pipelines, appointment booking, and client follow-up in a practical workflow for freelancers and service teams.",
     sections: [
       {
         heading: "The work is the handoff",

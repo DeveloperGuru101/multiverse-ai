@@ -21,10 +21,10 @@ const pages = {
     cta: "Visit HighLevel",
     href: HIGHLEVEL_URL,
     affiliate: true,
-    title: "HighLevel Review: CRM, Lead Follow-up, and Agency Workflows",
+    title: "GoHighLevel CRM Overview: Pipelines & Automation | MultiverseAI",
     description:
-      "Learn what HighLevel is used for: pipelines, lead follow-up, appointment booking, and agency workspaces, and where it differs from a funnel platform.",
-    h1: "HighLevel: CRM, Pipelines, and Agency Follow-up",
+      "Explore GoHighLevel (HighLevel) CRM for lead pipelines, automated follow-up, appointment booking, messaging, and agency workflows.",
+    h1: "GoHighLevel CRM for Pipelines and Agency Follow-Up",
     path: "/highlevel",
     crumbs: [
       { label: "Home", to: "/" },
@@ -37,6 +37,7 @@ const pages = {
     ],
     limits: "A pipeline does not create the offer or the traffic. Confirm the current plan and any trial terms on HighLevel’s own site before you sign up.",
     links: [
+      ["/blog/highlevel-review", "Read the full HighLevel review"],
       ["/systeme#vs-highlevel", "Compare Systeme.io and HighLevel"],
       ["/blog/agency-growth", "Read the agency workflow article"],
     ],
@@ -54,11 +55,11 @@ const pages = {
     ],
     cta: "Visit AdCreative.ai",
     href: ADCREATIVE_URL,
-    affiliate: false,
-    title: "AdCreative.ai Review: AI Ad Creatives for Campaigns",
+    affiliate: true,
+    title: "AdCreative.ai Overview: AI Ad Creative Tool | MultiverseAI",
     description:
-      "See what AdCreative.ai is for: generating advertising creatives and variations so a campaign can be tested before more of the budget is spent.",
-    h1: "AdCreative.ai: AI Advertising Creatives",
+      "See how the AdCreative.ai AI ad creative tool generates campaign assets and variations, where it fits in a marketing workflow, and what needs review.",
+    h1: "AdCreative.ai for AI-Generated Ad Creatives",
     path: "/adcreative",
     crumbs: [
       { label: "Home", to: "/" },
@@ -69,8 +70,9 @@ const pages = {
       "AdCreative.ai is an advertising tool. You give it a product or brand brief and it produces creative variations for different placements. It does not build the landing page, send the email, or decide the budget.",
       "Use it at the start of a campaign, then send the traffic to a page you control. On this site, that page-and-follow-up job is covered by the Systeme.io guide.",
     ],
-    limits: "Generated creatives still need a human check for accuracy and brand fit. This page links to the official site. MultiverseAI does not have an AdCreative.ai affiliate link configured.",
+    limits: "Generated creatives still need a human check for accuracy and brand fit. This page uses an AdCreative.ai affiliate link; MultiverseAI may earn a commission if you sign up, at no additional cost to you.",
     links: [
+      ["/blog/adcreative-ai-review", "Read the full AdCreative.ai review"],
       ["/blog/marketing", "Read the marketing workflow article"],
       ["/systeme", "See how a landing page and funnel fit after the ad"],
     ],

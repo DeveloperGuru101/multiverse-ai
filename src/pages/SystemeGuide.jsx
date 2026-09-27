@@ -1,6 +1,8 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import { SYSTEME_PRICING_URL } from "../links";
 import "../styles/guide.css";
+import "../styles/systeme-guide.css";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 import SeoHead from "../components/SeoHead";
@@ -21,15 +23,14 @@ import {
   audiences,
   breadcrumbs,
   clickfunnelsRows,
-  cluster,
   faqs,
   features,
-  glance,
   highlevelRows,
   kajabiRows,
   limits,
   plans,
   problems,
+  reviewSummary,
   steps,
   toc,
   workflowNotes,
@@ -57,7 +58,7 @@ export default function SystemeGuide() {
             name: "MultiverseAI",
             url: "https://www.multiverseaiapp.com/",
           },
-          dateModified: "2026-09-25",
+          dateModified: PAGE.dateModified,
         },
         {
           "@type": "BreadcrumbList",
@@ -99,12 +100,13 @@ export default function SystemeGuide() {
   );
 
   return (
-    <div className="page guide-page">
+    <div className="page guide-page systeme-guide">
       <SeoHead
         title={PAGE.title}
         description={PAGE.description}
         canonical={PAGE.canonical}
         image={PAGE.image}
+        imageAlt={PAGE.imageAlt}
         jsonLd={jsonLd}
         type="article"
       />
@@ -115,7 +117,7 @@ export default function SystemeGuide() {
             <p className="badge">AI tools • Marketing • Automation</p>
             <h1>{PAGE.h1}</h1>
             <p className="lede">{PAGE.subhead}</p>
-            <AffiliateDisclosure />
+            {/* <AffiliateDisclosure /> */}
             <div className="actions">
               <AffiliateButton>Explore Systeme.io</AffiliateButton>
               <a className="btn secondary" href="#what-is">
@@ -128,16 +130,26 @@ export default function SystemeGuide() {
         <div className="container guide-wrap">
           <Breadcrumbs items={breadcrumbs} />
 
-          <section className="card glance" aria-labelledby="glance-title">
-            <h2 id="glance-title">Systeme.io at a glance</h2>
+          <section className="card review-summary" aria-labelledby="glance-title">
+            <div className="review-summary-heading">
+              <div>
+                <p className="eyebrow">Independent overview</p>
+                <h2 id="glance-title">Systeme.io review summary</h2>
+              </div>
+              <p className="updated-note">Last updated: {PAGE.updated}</p>
+            </div>
             <dl>
-              {glance.map(([label, value]) => (
+              {reviewSummary.map(([label, value]) => (
                 <div key={label}>
                   <dt>{label}</dt>
                   <dd>{value}</dd>
                 </div>
               ))}
             </dl>
+            <div className="review-summary-cta">
+              <p>Try the free plan to see whether the funnel and email tools fit your workflow.</p>
+              <AffiliateButton>Try Systeme.io free</AffiliateButton>
+            </div>
           </section>
 
           <div className="guide-layout">
@@ -205,9 +217,13 @@ export default function SystemeGuide() {
                   will actually touch. Later sections explain how each one is
                   used.
                 </p>
-                <div className="card-grid feature-grid">
-                  {features.map((feature) => (
-                    <FeatureCard key={feature.title} title={feature.title}>
+                <div className="card-grid feature-grid systeme-feature-grid">
+                  {features.map((feature, index) => (
+                    <FeatureCard
+                      key={feature.title}
+                      title={feature.title}
+                      number={String(index + 1).padStart(2, "0")}
+                    >
                       <p>{feature.text}</p>
                     </FeatureCard>
                   ))}
@@ -357,6 +373,31 @@ export default function SystemeGuide() {
                 </p>
               </section>
 
+              <section id="affiliate-marketing">
+                <h2>Is Systeme.io good for affiliate marketing?</h2>
+                <p>
+                  It can support an affiliate campaign by giving you a landing page,
+                  an opt-in form, email follow-up, and a place to track contacts.
+                  The practical sequence is simple: publish a useful page, offer a
+                  relevant lead magnet, send the promised resource, then explain an
+                  affiliate product that fits the reader’s needs.
+                </p>
+                <ol className="plain-list">
+                  <li>Build a focused landing page and disclose the affiliate relationship clearly.</li>
+                  <li>Collect permission before sending marketing email, then deliver the promised resource.</li>
+                  <li>Use a short sequence to explain the problem and the product; include your affiliate disclosure near recommendations.</li>
+                  <li>Use the merchant’s tracking link and check its reporting. Systeme.io’s own affiliate feature is for managing partners who promote your offer.</li>
+                </ol>
+                <p>
+                  These tools organize the campaign; they do not guarantee traffic,
+                  conversions, or commissions. For a related workflow, see the{" "}
+                  <Link to="/blog/marketing">marketing guides</Link>.
+                </p>
+                <div className="inline-cta">
+                  <AffiliateButton>Explore Systeme.io for your funnel</AffiliateButton>
+                </div>
+              </section>
+
               <section id="crm">
                 <h2>CRM and pipelines</h2>
                 <p>
@@ -499,55 +540,6 @@ export default function SystemeGuide() {
                 </div>
               </section>
 
-              <section id="businesses">
-                <h2>Systeme.io for different businesses</h2>
-                <h3>Entrepreneurs</h3>
-                <p>
-                  Use it to launch one product: a funnel, an email sequence, and
-                  checkout. Lead generation can be the only goal for the first
-                  month if the product is not ready.
-                </p>
-                <h3>Coaches</h3>
-                <p>
-                  A consultation funnel is a page, a booking step, and email
-                  follow-up. Course selling can come later, using the same list.
-                </p>
-                <h3>Course creators</h3>
-                <p>
-                  Course creation, a sales funnel, student onboarding, and email
-                  campaigns can share the purchase record. Test enrollment with
-                  a second email address.
-                </p>
-                <h3>Freelancers</h3>
-                <p>
-                  A service page, a short form, and appointment booking cover
-                  most enquiries. Follow-up is a sequence for people who do not
-                  book, not a newsletter they did not ask for.
-                </p>
-                <h3>Small businesses</h3>
-                <p>
-                  Lead capture, a promotion to existing customers, and a simple
-                  automation for new enquiries are the realistic first projects.
-                </p>
-                <h3>Content creators</h3>
-                <p>
-                  An email list is the asset. Digital products and courses are
-                  optional ways to offer something to that list.
-                </p>
-                <h3>Affiliate marketers</h3>
-                <p>
-                  Landing pages and email list building are the work. Campaign
-                  automation sends the sequence. The offer still has to be
-                  something you can describe honestly.
-                </p>
-                <h3>Agencies</h3>
-                <p>
-                  Client funnels and lead generation campaigns are possible.
-                  If the agency’s product is a CRM for many clients, read the
-                  HighLevel comparison before you standardize on Systeme.io.
-                </p>
-              </section>
-
               <section id="before-after">
                 <h2>Separate tools compared with one account</h2>
                 <p>
@@ -627,17 +619,18 @@ export default function SystemeGuide() {
               <section id="pricing">
                 <h2>Systeme.io pricing</h2>
                 <p>
-                  Prices below are taken from the Systeme.io pricing page FAQ,
-                  which that page marked as updated in April 2026. Plans are
+                  Prices and limits below were checked against Systeme.io’s
+                  official pricing page on September 27, 2026; its pricing FAQ
+                  is marked as updated in April 2026. Plans are
                   organized mainly by contact limits. Every plan includes the
                   core tools. The Webinar plan adds automated webinars. The
-                  Unlimited plan is the one the FAQ points to for unlimited
-                  contacts, sub-accounts, and free migration.
+                  Unlimited is the plan for unlimited contacts and free migration;
+                  Systeme.io says sub-accounts are available on every plan.
                 </p>
                 <p>
                   Confirm the numbers on the{" "}
                   <a
-                    href="https://systeme.io/pricing"
+                    href={SYSTEME_PRICING_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -647,20 +640,53 @@ export default function SystemeGuide() {
                   figures change. Annual billing is offered, and the pricing
                   page advertises two months included when you pay yearly.
                 </p>
-                <div className="card-grid price-grid">
-                  {plans.map((plan) => (
-                    <article className="card price-plan" key={plan.name}>
-                      <h3>{plan.name}</h3>
-                      <p className="price">
-                        {plan.price} <span>{plan.detail}</span>
-                      </p>
-                      <ul className="plain-list">
-                        {plan.points.map((point) => (
-                          <li key={point}>{point}</li>
+                <div
+                  className="table-wrap"
+                  role="region"
+                  aria-label="Systeme.io plan pricing comparison"
+                  tabIndex="0"
+                >
+                  <table className="compare-table pricing-table">
+                    <caption>
+                      Systeme.io plans and listed limits, checked September 27, 2026.
+                      Prices shown in USD per month.
+                    </caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Plan detail</th>
+                        {plans.map((plan) => (
+                          <th scope="col" key={plan.name}>{plan.name}</th>
                         ))}
-                      </ul>
-                    </article>
-                  ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        ["Price", (plan) => <><strong>{plan.price}</strong> {plan.detail}</>],
+                        ["Contacts", (plan) => plan.contacts],
+                        ["Sales funnels", (plan) => plan.funnels],
+                        ["Courses", (plan) => plan.courses],
+                        ["Automation rules", (plan) => plan.automations],
+                        ["Custom domains", (plan) => plan.domains],
+                        ["Plan highlight", (plan) => plan.highlight],
+                      ].map(([label, value]) => (
+                        <tr key={label}>
+                          <th scope="row">{label}</th>
+                          {plans.map((plan) => (
+                            <td key={plan.name}>{value(plan)}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p className="table-scroll-hint">
+                    Swipe or scroll horizontally to compare every plan.
+                  </p>
+                  <p className="pricing-footnote">
+                    All plans list unlimited email sends and no additional
+                    platform transaction fee; payment processor fees still
+                    apply. Systeme.io states sub-accounts are available on every
+                    plan. Feature limits can change.
+                  </p>
                 </div>
                 <p>
                   Choose a plan from the constraint you will hit first:
@@ -684,7 +710,8 @@ export default function SystemeGuide() {
                   Use the free plan to build one funnel, collect a small list,
                   and send a short sequence. Move to Startup, at the listed $17
                   per month, when you need more than three funnels, more than
-                  one course, or more than 2,000 contacts. The free plan is a
+                  one course, or more than 2,000 contacts. Startup lists up to
+                  10 funnels; Webinar lists up to 50. The free plan is a
                   real way to judge the editor. It is not a hidden trial that
                   deletes the account.
                 </p>
@@ -694,23 +721,25 @@ export default function SystemeGuide() {
               </section>
 
               <section id="pros">
-                <h2>Advantages and limitations</h2>
+                <h2>Systeme.io pros and cons</h2>
                 <p>
                   This is not a star rating. It is a list of what the platform
                   is built to cover, and what you should still check.
                 </p>
-                <h3>Advantages</h3>
-                <ul className="plain-list">
-                  {advantages.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-                <h3>Limitations</h3>
-                <ul className="plain-list">
-                  {limits.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+                <div className="pros-cons-grid">
+                  <div className="card pros-card">
+                    <h3>Pros</h3>
+                    <ul className="plain-list">
+                      {advantages.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </div>
+                  <div className="card cons-card">
+                    <h3>Cons and trade-offs</h3>
+                    <ul className="plain-list">
+                      {limits.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  </div>
+                </div>
               </section>
 
               <section id="alternatives">
@@ -843,15 +872,13 @@ export default function SystemeGuide() {
               />
 
               <section id="more-guides" aria-labelledby="more-guides-title">
-                <h2 id="more-guides-title">More Systeme.io guides</h2>
-                <p>
-                  These articles are planned. They are listed so you can see
-                  what this guide will be split into. They are not links yet.
-                </p>
-                <ul className="upcoming">
-                  {cluster.map((title) => (
-                    <li key={title}>{title}</li>
-                  ))}
+                <h2 id="more-guides-title">Related marketing guides</h2>
+                <p>Continue with a related guide already available on MultiverseAI.</p>
+                <ul>
+                  <li><Link to="/blog/marketing">Marketing workflows</Link></li>
+                  <li><Link to="/blog/automation">Lead follow-up automation</Link></li>
+                  <li><Link to="/highlevel">HighLevel CRM guide</Link></li>
+                  <li><Link to="/adcreative">AdCreative.ai guide</Link></li>
                 </ul>
               </section>
             </article>

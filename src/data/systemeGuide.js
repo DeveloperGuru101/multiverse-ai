@@ -1,12 +1,15 @@
 export const PAGE = {
-  title: "Systeme.io Review: Features, Pricing, Funnels & Automation Guide",
+  title: "Systeme.io Review 2026: Pricing, Features, Pros & Cons",
   description:
-    "Learn what Systeme.io is, how its sales funnels, email marketing, automation, courses and digital products work, plus pricing, the free plan, and use cases.",
+    "An independent Systeme.io review covering current pricing, the free plan, funnels, email marketing, affiliate tools, pros and cons, and alternatives.",
   canonical: "https://www.multiverseaiapp.com/systeme",
   image: "https://www.multiverseaiapp.com/logo.png",
-  h1: "Systeme.io Review: Build, Market & Grow Your Online Business From One Platform",
+  updated: "September 27, 2026",
+  dateModified: "2026-09-27",
+  imageAlt: "MultiverseAI logo",
+  h1: "Systeme.io Review 2026: Features, Pricing, Pros & Cons",
   subhead:
-    "Explore Systeme.io's sales funnels, email marketing, automation, website building, online courses, digital products and other tools, and learn how they can simplify everyday online-business tasks.",
+    "Is Systeme.io a good fit for your business? This review covers its free plan, core marketing tools, trade-offs, and how it compares with other platforms.",
 };
 
 export const toc = [
@@ -20,6 +23,7 @@ export const toc = [
   { id: "courses", label: "Online courses" },
   { id: "products", label: "Digital products" },
   { id: "affiliates", label: "Affiliate management" },
+  { id: "affiliate-marketing", label: "Affiliate marketing workflow" },
   { id: "crm", label: "CRM and pipelines" },
   { id: "booking", label: "Booking" },
   { id: "webinars", label: "Webinars" },
@@ -28,7 +32,6 @@ export const toc = [
   { id: "problems", label: "Problems it can help with" },
   { id: "small-business", label: "A small-business workflow" },
   { id: "use-cases", label: "Use cases" },
-  { id: "businesses", label: "By type of business" },
   { id: "before-after", label: "Separate tools vs one account" },
   { id: "stack", label: "Where it fits with other tools" },
   { id: "pricing", label: "Pricing" },
@@ -177,54 +180,22 @@ export const audiences = [
   ["Freelancers", "Publish a service page, capture a project inquiry, and book a call. The contact stays with the conversation."],
   ["Small businesses", "Run a promotion to an email list, capture new enquiries, and stop retyping the same follow-up."],
   ["Content creators", "Turn an audience into a list, then offer a download or a course when there is something worth selling."],
-  ["Affiliate marketers", "Build a landing page and an email list for an offer you promote. Track your own partners separately if you also run an affiliate program."],
   ["Agencies", "Build a client funnel or a lead-generation campaign in one account. Agencies that need a client pipeline and white-label software should compare a CRM built for that job."],
 ];
 
+export const reviewSummary = [
+  ["Best for", "Creators, affiliates, coaches, and small businesses building a simple marketing funnel."],
+  ["Main strength", "Funnels, email, automation, checkout, and courses in one account."],
+  ["Free plan", "Yes. Official pricing lists up to 2,000 contacts and 3 funnels."],
+  ["Main trade-off", "Specialist tools may offer more depth for complex CRM, ecommerce, or course needs."],
+  ["Alternatives to compare", "ClickFunnels for funnel-focused work; HighLevel for agency CRM; Kajabi for courses."],
+];
+
 export const plans = [
-  {
-    name: "Free",
-    price: "$0",
-    detail: "No card required",
-    points: [
-      "Up to 2,000 contacts",
-      "3 sales funnels",
-      "1 course, 1 blog, 1 affiliate program",
-      "1 custom domain",
-      "Unlimited emails, as stated by Systeme.io",
-    ],
-  },
-  {
-    name: "Startup",
-    price: "$17",
-    detail: "per month",
-    points: [
-      "Up to 5,000 contacts",
-      "Unlimited funnels, per the pricing FAQ",
-      "5 courses",
-      "The same core tools as the free plan, with higher limits",
-    ],
-  },
-  {
-    name: "Webinar",
-    price: "$47",
-    detail: "per month",
-    points: [
-      "Up to 10,000 contacts",
-      "Automated webinar funnels",
-      "Higher limits than Startup",
-    ],
-  },
-  {
-    name: "Unlimited",
-    price: "$97",
-    detail: "per month",
-    points: [
-      "Unlimited contacts",
-      "Sub-accounts for managing more than one workspace",
-      "Free migration, as listed for this plan",
-    ],
-  },
+  { name: "Free", price: "$0", detail: "per month", contacts: "Up to 2,000", funnels: "3", courses: "1", automations: "1", domains: "1", highlight: "No card required; 1 blog and 1 affiliate program" },
+  { name: "Startup", price: "$17", detail: "per month", contacts: "Up to 5,000", funnels: "10", courses: "5", automations: "10", domains: "3", highlight: "More capacity for a growing list and funnel set" },
+  { name: "Webinar", price: "$47", detail: "per month", contacts: "Up to 10,000", funnels: "50", courses: "20", automations: "100", domains: "10", highlight: "Evergreen webinars" },
+  { name: "Unlimited", price: "$97", detail: "per month", contacts: "Unlimited", funnels: "Unlimited", courses: "Unlimited", automations: "Unlimited", domains: "Unlimited", highlight: "Free migration service" },
 ];
 
 export const advantages = [
@@ -249,7 +220,7 @@ export const highlevelRows = [
   { label: "Email", cells: ["Campaigns and sequences in the same account", "Email and SMS as follow-up on a pipeline"] },
   { label: "Courses and downloads", cells: ["Built in", "Not the reason most agencies adopt it"] },
   { label: "CRM", cells: ["Contacts, tags, and pipelines", "Pipelines, conversations, and client accounts"] },
-  { label: "Agency setup", cells: ["Sub-accounts on higher plans; white-label is separate", "Built around agency workspaces"] },
+  { label: "Agency setup", cells: ["Sub-accounts are available; white-label is separate", "Built around agency workspaces"] },
   { label: "Choose it if", cells: ["You need pages, email, and checkout together", "You need a sales pipeline and client follow-up"] },
 ];
 
@@ -293,7 +264,7 @@ export const faqs = [
   },
   {
     question: "How much does Systeme.io cost?",
-    answer: "As listed on the Systeme.io pricing page in April 2026: Free at $0, Startup at $17 per month, Webinar at $47 per month, and Unlimited at $97 per month. Annual billing is offered. Check the pricing page before you subscribe, because limits and prices can change.",
+    answer: "When checked on September 27, 2026, the Systeme.io pricing page listed Free at $0, Startup at $17 per month, Webinar at $47 per month, and Unlimited at $97 per month. Annual billing is offered. Check the pricing page before you subscribe, because limits and prices can change.",
   },
   {
     question: "What is Systeme.io used for?",
@@ -317,7 +288,7 @@ export const faqs = [
   },
   {
     question: "Can I create an online course with Systeme.io?",
-    answer: "Yes. You can organize lessons and sell access. The free plan includes 1 course. Startup includes 5. Higher plans raise or remove that limit.",
+    answer: "Yes. You can organize lessons and sell access. The listed limits are 1 course on Free, 5 on Startup, 20 on Webinar, and unlimited on Unlimited.",
   },
   {
     question: "Does Systeme.io have a CRM?",
@@ -351,27 +322,6 @@ export const faqs = [
     question: "Can Systeme.io replace multiple marketing tools?",
     answer: "It can replace a separate page builder, email tool, and simple checkout for a small offer. It does not replace advertising tools, an accounting system, or a CRM built for a sales team. Replace a tool only when the new account covers the job you actually use.",
   },
-];
-
-export const cluster = [
-  "Systeme.io beginner tutorial",
-  "Systeme.io pricing explained",
-  "How to create a sales funnel with Systeme.io",
-  "How to build a landing page in Systeme.io",
-  "Systeme.io email marketing tutorial",
-  "Systeme.io automation tutorial",
-  "How to sell digital products with Systeme.io",
-  "How to create an online course with Systeme.io",
-  "Systeme.io vs HighLevel",
-  "Systeme.io vs ClickFunnels",
-  "Systeme.io vs Kajabi",
-  "Systeme.io alternatives",
-  "Systeme.io affiliate marketing guide",
-  "How to build an email list with Systeme.io",
-  "How to create a lead generation funnel",
-  "Systeme.io for coaches",
-  "Systeme.io for freelancers",
-  "Systeme.io for small businesses",
 ];
 
 export const breadcrumbs = [

@@ -1,0 +1,499 @@
+.hvps-pros-cons-intro {
+  max-width: 68ch;
+  color: var(--muted);
+}
+
+.hvps-pros-cons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.hvps-pros-card,
+.hvps-cons-card {
+  align-self: start;
+  overflow: hidden;
+}
+
+.hvps-pros-card {
+  border-color: color-mix(in srgb, #4ade80 40%, var(--border));
+  background: linear-gradient(155deg, color-mix(in srgb, #14532d 16%, var(--surface)), var(--surface) 48%);
+}
+
+.hvps-cons-card {
+  border-color: color-mix(in srgb, #fbbf24 38%, var(--border));
+  background: linear-gradient(155deg, color-mix(in srgb, #78350f 16%, var(--surface)), var(--surface) 48%);
+}
+
+.hvps-pros-cons-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hvps-pros-cons-mark {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 12px;
+  font-size: 1.45rem;
+  font-weight: 800;
+}
+
+.hvps-pros-card .hvps-pros-cons-mark,
+.hvps-pros-card .hvps-point-mark {
+  color: #86efac;
+  background: color-mix(in srgb, #166534 25%, transparent);
+}
+
+.hvps-cons-card .hvps-pros-cons-mark,
+.hvps-cons-card .hvps-point-mark {
+  color: #fcd34d;
+  background: color-mix(in srgb, #92400e 24%, transparent);
+}
+
+.hvps-pros-card .hvps-pros-cons-heading h3,
+.hvps-cons-card .hvps-pros-cons-heading h3 {
+  margin: 0;
+  color: var(--text);
+}
+
+.hvps-pros-cons-heading p {
+  margin: 3px 0 0;
+  color: var(--faint);
+  font-size: 0.9rem;
+}
+
+.hvps-pros-cons-list {
+  display: grid;
+  gap: 17px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hvps-pros-cons-list li {
+  display: grid;
+  grid-template-columns: 25px minmax(0, 1fr);
+  gap: 11px;
+  align-items: start;
+}
+
+.hvps-point-mark {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.hvps-pros-cons-list h4 {
+  margin: 1px 0 4px;
+  color: var(--text);
+  font-size: 0.98rem;
+}
+
+.hvps-pros-cons-list p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.hvps-pros-cons-takeaway {
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  background: var(--surface);
+  color: var(--muted);
+}
+
+@media (max-width: 767px) {
+  .hvps-pros-cons-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .hvps-pros-card,
+  .hvps-cons-card {
+    padding: 18px;
+  }
+
+  .hvps-pros-cons-list {
+    gap: 15px;
+  }
+}
+
+/* Page-wide Hostinger VPS review treatment */
+.hostinger-vps-guide {
+  background:
+    radial-gradient(ellipse at 9% 0%, rgba(20, 184, 166, 0.11), transparent 34%),
+    radial-gradient(ellipse at 96% 40%, rgba(59, 130, 246, 0.06), transparent 29%);
+}
+
+.hostinger-vps-guide .guide-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(48px, 8vw, 92px) 0 42px;
+  border-bottom: 1px solid rgba(45, 212, 191, 0.15);
+  background:
+    radial-gradient(ellipse at 82% 16%, rgba(13, 148, 136, 0.2), transparent 42%),
+    linear-gradient(145deg, rgba(15, 23, 42, 0.4), rgba(2, 6, 23, 0.06));
+}
+
+.hostinger-vps-guide .guide-hero::after {
+  position: absolute;
+  right: max(-90px, calc((100vw - 1100px) / 2));
+  bottom: -220px;
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(45, 212, 191, 0.14);
+  border-radius: 50%;
+  box-shadow: 0 0 0 34px rgba(45, 212, 191, 0.025), 0 0 0 70px rgba(45, 212, 191, 0.018);
+  content: "";
+  pointer-events: none;
+}
+
+.hostinger-vps-guide .guide-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hostinger-vps-guide .guide-hero .badge {
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  background: rgba(13, 148, 136, 0.14);
+  color: #99f6e4;
+}
+
+.hostinger-vps-guide .guide-hero h1 {
+  max-width: 850px;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.hostinger-vps-guide .guide-hero .lede {
+  max-width: 70ch;
+  color: #dbeafe;
+  font-size: clamp(1.08rem, 2vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.hostinger-vps-guide .guide-hero .disclosure-box {
+  max-width: 68ch;
+  padding: 12px 15px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.32);
+}
+
+.hostinger-vps-guide .guide-hero .actions {
+  margin-top: 22px;
+}
+
+.hostinger-vps-guide .guide-hero .actions .btn,
+.hostinger-vps-guide .guide-body .btn {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.hostinger-vps-guide .guide-hero .actions .btn:hover,
+.hostinger-vps-guide .guide-body .btn:hover {
+  transform: translateY(-2px);
+}
+
+.hostinger-vps-guide .guide-wrap {
+  padding-bottom: clamp(56px, 8vw, 96px);
+}
+
+.hostinger-vps-guide #at-a-glance {
+  overflow: hidden;
+  padding: clamp(20px, 3vw, 32px);
+  border-color: rgba(45, 212, 191, 0.3);
+  background:
+    radial-gradient(ellipse at top right, rgba(13, 148, 136, 0.15), transparent 48%),
+    linear-gradient(145deg, #102a35, #0b1224 72%);
+  box-shadow: 0 20px 50px rgba(2, 6, 23, 0.24);
+}
+
+.hostinger-vps-guide .guide-layout {
+  gap: clamp(24px, 4vw, 44px);
+}
+
+.hostinger-vps-guide .toc-desktop {
+  padding: 12px;
+  border: 1px solid rgba(45, 212, 191, 0.16);
+  border-radius: 16px;
+  background: rgba(11, 18, 36, 0.78);
+  box-shadow: 0 16px 36px rgba(2, 6, 23, 0.17);
+  scrollbar-color: #475569 transparent;
+  scrollbar-width: thin;
+}
+
+.hostinger-vps-guide .toc-label,
+.hostinger-vps-guide .toc a span {
+  color: #5eead4;
+}
+
+.hostinger-vps-guide .toc a {
+  padding: 8px;
+  border-radius: 8px;
+  transition: color 150ms ease, background 150ms ease, transform 150ms ease;
+}
+
+.hostinger-vps-guide .toc a:hover,
+.hostinger-vps-guide .toc a:focus-visible {
+  transform: translateX(2px);
+  background: rgba(13, 148, 136, 0.15);
+  color: #ecfeff;
+}
+
+.hostinger-vps-guide .guide-body > section {
+  margin-top: clamp(40px, 6vw, 62px);
+}
+
+.hostinger-vps-guide .guide-body > section > h2 {
+  position: relative;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.hostinger-vps-guide .guide-body > section > h2::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 52px;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #5eead4, #0d9488);
+  content: "";
+}
+
+.hostinger-vps-guide .guide-body > section > p {
+  max-width: 76ch;
+  line-height: 1.78;
+}
+
+.hostinger-vps-guide .guide-body a:not(.btn) {
+  text-decoration-color: rgba(94, 234, 212, 0.48);
+  text-underline-offset: 3px;
+  transition: color 150ms ease, text-decoration-color 150ms ease;
+}
+
+.hostinger-vps-guide .guide-body a:not(.btn):hover {
+  color: #99f6e4;
+  text-decoration-color: currentColor;
+}
+
+.hostinger-vps-guide .guide-body .card:not(.hvps-pros-card):not(.hvps-cons-card) {
+  border-color: rgba(100, 116, 139, 0.34);
+  background: linear-gradient(145deg, rgba(17, 28, 53, 0.94), rgba(15, 23, 42, 0.94));
+  transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+}
+
+.hostinger-vps-guide .guide-body .card:not(.hvps-pros-card):not(.hvps-cons-card):hover {
+  transform: translateY(-3px);
+  border-color: rgba(45, 212, 191, 0.48);
+  box-shadow: 0 18px 34px rgba(2, 6, 23, 0.24);
+}
+
+.hostinger-vps-guide .hvps-feature-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.hostinger-vps-guide .hvps-feature-card {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 24px 24px;
+  border-color: rgba(45, 212, 191, 0.2) !important;
+  background:
+    radial-gradient(ellipse at top right, rgba(13, 148, 136, 0.12), transparent 58%),
+    linear-gradient(145deg, #102a35, #0b1224 76%) !important;
+}
+
+.hostinger-vps-guide .hvps-feature-card::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, #99f6e4, #0d9488 62%, transparent);
+  content: "";
+}
+
+.hostinger-vps-guide .hvps-feature-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 30px;
+  margin-bottom: 15px;
+  padding: 0 9px;
+  border: 1px solid rgba(94, 234, 212, 0.23);
+  border-radius: 9px;
+  background: rgba(13, 148, 136, 0.13);
+  color: #99f6e4;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hostinger-vps-guide .hvps-feature-card h3 {
+  margin: 0 0 9px;
+  color: #f8fafc;
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.hostinger-vps-guide .hvps-feature-card p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.hostinger-vps-guide .table-wrap {
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 14px;
+  background: rgba(11, 18, 36, 0.78);
+  scrollbar-color: #0d9488 #0b1224;
+  scrollbar-width: thin;
+}
+
+.hostinger-vps-guide .compare-table th {
+  background: #102a35;
+}
+
+.hostinger-vps-guide .compare-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: linear-gradient(135deg, #164e63, #123044);
+  color: #ecfeff;
+}
+
+.hostinger-vps-guide .compare-table tbody tr {
+  transition: background 140ms ease;
+}
+
+.hostinger-vps-guide .compare-table tbody tr:hover {
+  background: rgba(13, 148, 136, 0.075);
+}
+
+.hostinger-vps-guide .compare-table th,
+.hostinger-vps-guide .compare-table td {
+  border-color: rgba(100, 116, 139, 0.26);
+  line-height: 1.55;
+}
+
+.hostinger-vps-guide .guide-flow .flow-step {
+  min-height: 42px;
+  padding-inline: 13px;
+  border-color: rgba(45, 212, 191, 0.3);
+  background: linear-gradient(145deg, #164e63, #0f172a);
+  transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+}
+
+.hostinger-vps-guide .guide-flow .flow-item:hover .flow-step {
+  transform: translateY(-2px);
+  border-color: #2dd4bf;
+  background: #134e4a;
+}
+
+.hostinger-vps-guide .guide-flow .flow-arrow {
+  color: #5eead4;
+}
+
+.hostinger-vps-guide .faq-list details {
+  margin: 9px 0;
+  padding: 0 16px;
+  border: 1px solid rgba(100, 116, 139, 0.28);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.62);
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.hostinger-vps-guide .faq-list details:hover,
+.hostinger-vps-guide .faq-list details[open] {
+  border-color: rgba(45, 212, 191, 0.5);
+  background: rgba(16, 42, 53, 0.88);
+}
+
+.hostinger-vps-guide .faq-list summary {
+  padding: 16px 2px;
+  color: #ecfeff;
+  line-height: 1.5;
+}
+
+.hostinger-vps-guide .faq-list summary::marker {
+  color: #5eead4;
+}
+
+.hostinger-vps-guide .faq-list details p {
+  padding: 0 2px 15px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.hostinger-vps-guide .author-box {
+  padding: clamp(20px, 3vw, 30px);
+  border-color: rgba(45, 212, 191, 0.25);
+}
+
+.hostinger-vps-guide .toc-mobile {
+  border-color: rgba(45, 212, 191, 0.32);
+  background: rgba(11, 18, 36, 0.92);
+}
+
+.hostinger-vps-guide .toc-mobile summary {
+  color: #ecfeff;
+}
+
+@media (max-width: 1024px) {
+  .hostinger-vps-guide .toc-desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .hostinger-vps-guide .guide-hero {
+    padding-top: 44px;
+    padding-bottom: 34px;
+  }
+
+  .hostinger-vps-guide .hvps-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .hostinger-vps-guide .hvps-feature-card {
+    padding: 19px 20px 21px;
+  }
+
+  .hostinger-vps-guide .compare-table {
+    min-width: 700px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hostinger-vps-guide .guide-body .card,
+  .hostinger-vps-guide .toc a,
+  .hostinger-vps-guide .flow-step,
+  .hostinger-vps-guide .faq-list details {
+    transition: none;
+  }
+
+  .hostinger-vps-guide .guide-body .card:hover,
+  .hostinger-vps-guide .toc a:hover,
+  .hostinger-vps-guide .flow-item:hover .flow-step {
+    transform: none;
+  }
+}

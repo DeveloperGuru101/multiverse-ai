@@ -18,6 +18,7 @@ export default function SeoHead({
   path,
   canonical,
   image = SHARE_IMAGE,
+  imageAlt = SITE_NAME,
   jsonLd,
   noindex = false,
   type = "website",
@@ -35,10 +36,12 @@ export default function SeoHead({
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:url", url);
     upsertMeta("property", "og:image", image);
+    upsertMeta("property", "og:image:alt", imageAlt);
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", title);
     upsertMeta("name", "twitter:description", description);
     upsertMeta("name", "twitter:image", image);
+    upsertMeta("name", "twitter:image:alt", imageAlt);
 
     let link = document.head.querySelector('link[rel="canonical"]');
     if (!noindex) {
@@ -65,7 +68,7 @@ export default function SeoHead({
     } else if (script) {
       script.remove();
     }
-  }, [title, description, url, image, robots, type, noindex, jsonLd]);
+  }, [title, description, url, image, imageAlt, robots, type, noindex, jsonLd]);
 
   if (typeof window !== "undefined") return null;
 
@@ -81,10 +84,12 @@ export default function SeoHead({
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:alt" content={imageAlt} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:image:alt" content={imageAlt} />
       {jsonLd ? (
         <script
           type="application/ld+json"

@@ -51,7 +51,7 @@ function Article({ post }) {
   return (
     <article className="article">
       <SeoHead
-        title={`${post.title} | MultiverseAI`}
+        title={post.seoTitle || `${post.title} | MultiverseAI`}
         description={post.description}
         path={`/blog/${post.slug}`}
         type="article"

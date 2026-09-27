@@ -66,6 +66,14 @@ const topics = [
     post: "/blog/agency-growth",
   },
   {
+    id: "web-hosting",
+    icon: "VPS",
+    title: "Web Hosting & VPS",
+    covers: ["VPS hosting", "Linux servers", "Website deployment", "Developer hosting"],
+    desc: "Understand VPS plans, server management, and hosting choices for websites and applications.",
+    post: "/hostinger-vps-review",
+  },
+  {
     id: "tutorials",
     icon: "GUIDE",
     title: "Tutorials & Guides",
@@ -154,15 +162,12 @@ const guideTypes = [
   },
 ];
 
-const upcoming = [
-  "How to Build a Simple Marketing Funnel",
-  "Systeme.io Tutorial for Beginners",
-  "HighLevel CRM Workflow Explained",
-  "Systeme.io vs HighLevel",
-  "How AI Can Help Create Advertising Creatives",
-  "AI Tools for Marketing Workflows",
-  "How to Automate Lead Follow-Up",
-  "Best AI Tools for Small Businesses",
+const featuredGuides = [
+  { title: "Systeme.io review", to: "/systeme" },
+  { title: "AdCreative.ai review", to: "/blog/adcreative-ai-review" },
+  { title: "GoHighLevel CRM review", to: "/blog/highlevel-review" },
+  { title: "Hostinger VPS review", to: "/hostinger-vps-review" },
+  { title: "Lead follow-up automation", to: "/blog/automation" },
 ];
 
 const audiences = [
@@ -234,8 +239,8 @@ export default function Home() {
   return (
     <div className="page">
       <SeoHead
-        title="MultiverseAI – AI Tools, Marketing Automation & Growth Strategies"
-        description="Discover AI tools, marketing software, automation workflows, tutorials and practical strategies to help you work smarter and grow your online business."
+        title="MultiverseAI | AI Tools, Marketing Automation & Software Guides"
+        description="Explore practical AI tool reviews, marketing automation, CRM workflows, software comparisons, and VPS hosting guides for online businesses and developers."
         path="/"
         jsonLd={{
           "@context": "https://schema.org",
@@ -303,15 +308,14 @@ export default function Home() {
             <p className="eyebrow">What is MultiverseAI?</p>
             <h2>Tools and techniques for growing online</h2>
             <p>
-              MultiverseAI is a resource platform focused on AI tools, marketing
-              software, automation platforms and practical online-business
-              workflows.
+              MultiverseAI publishes practical guides to AI tools, marketing software,
+              automation platforms, CRM workflows, and web hosting for online
+              businesses and developers.
             </p>
             <p>
-              We will share useful tools, tutorials, comparisons and techniques
-              that can help people understand how modern software can be used
-              for productivity, marketing, lead generation, automation and
-              business growth.
+              We publish practical software guides, tutorials, and comparisons
+              that explain how tools support productivity, marketing, lead
+              generation, automation, web hosting, and business operations.
             </p>
           </div>
         </section>
@@ -406,10 +410,10 @@ export default function Home() {
               <Link to="/guides">View All Guides →</Link>
             </p>
 
-            <h3 className="upcoming-title">Guides in progress</h3>
+            <h3 className="upcoming-title">Published software guides</h3>
             <ul className="upcoming">
-              {upcoming.map((title) => (
-                <li key={title}>{title}</li>
+              {featuredGuides.map((guide) => (
+                <li key={guide.to}><Link to={guide.to}>{guide.title}</Link></li>
               ))}
             </ul>
           </div>

@@ -9,6 +9,9 @@ import BlogPost from "./pages/BlogPost";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import SystemeGuide from "./pages/SystemeGuide";
+import AdCreativeGuide from "./pages/AdCreativeGuide";
+import HighLevelGuide from "./pages/HighLevelGuide";
+import HostingerVpsGuide from "./pages/HostingerVpsGuide";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -19,6 +22,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/systeme" element={<SystemeGuide />} />
+        <Route path="/blog/adcreative-ai-review" element={<AdCreativeGuide />} />
+        <Route path="/blog/highlevel-review" element={<HighLevelGuide />} />
+        <Route path="/hostinger-vps-review" element={<HostingerVpsGuide />} />
         <Route path="/highlevel" element={<ToolPage slug="highlevel" />} />
         <Route path="/adcreative" element={<ToolPage slug="adcreative" />} />
         <Route path="/guides" element={<Guides />} />

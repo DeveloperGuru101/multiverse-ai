@@ -14,23 +14,33 @@ const links = [
       { label: "Marketing article", to: "/blog/marketing" },
     ],
   },
-  { label: "Automation", to: "/#automation" },
+  {
+    label: "Automation",
+    to: "/#automation",
+    children: [
+      { label: "Lead follow-up workflow", to: "/blog/automation" },
+      { label: "AdCreative.ai review", to: "/blog/adcreative-ai-review" },
+      { label: "HighLevel review", to: "/blog/highlevel-review" },
+      { label: "VPS hosting review", to: "/hostinger-vps-review" },
+    ],
+  },
   { label: "Guides", to: "/#guides" },
   { label: "Comparisons", to: "/#comparisons" },
 ];
 
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const [marketingOpen, setMarketingOpen] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
     setOpen(false);
-    setMarketingOpen(false);
+    setOpenSubmenu(null);
   }, [location.pathname, location.hash]);
 
   function close() {
     setOpen(false);
+    setOpenSubmenu(null);
   }
 
   function onNavClick(event, to) {
@@ -70,13 +80,27 @@ export default function SiteHeader() {
           className={open ? "site-nav is-open" : "site-nav"}
           aria-label="Primary"
         >
-          {links.map((link) =>
-            link.children ? (
+          {links.map((link) => {
+            if (!link.children) {
+              return (
+                <Link
+                  key={link.label}
+                  to={link.to}
+                  onClick={(event) => onNavClick(event, link.to)}
+                >
+                  {link.label}
+                </Link>
+              );
+            }
+
+            const submenuId = `${link.label.toLowerCase()}-submenu`;
+            const isOpen = openSubmenu === link.label;
+            return (
               <div
-                className={marketingOpen ? "nav-group is-open" : "nav-group"}
+                className={isOpen ? "nav-group is-open" : "nav-group"}
                 key={link.label}
-                onMouseEnter={() => setMarketingOpen(true)}
-                onMouseLeave={() => setMarketingOpen(false)}
+                onMouseEnter={() => setOpenSubmenu(link.label)}
+                onMouseLeave={() => setOpenSubmenu(null)}
               >
                 <Link to={link.to} onClick={(event) => onNavClick(event, link.to)}>
                   {link.label}
@@ -84,14 +108,14 @@ export default function SiteHeader() {
                 <button
                   type="button"
                   className="sub-toggle"
-                  aria-expanded={marketingOpen}
-                  aria-controls="marketing-submenu"
-                  onClick={() => setMarketingOpen((value) => !value)}
+                  aria-expanded={isOpen}
+                  aria-controls={submenuId}
+                  onClick={() => setOpenSubmenu(isOpen ? null : link.label)}
                 >
-                  <span className="sr-only">Show Marketing links</span>
+                  <span className="sr-only">Show {link.label} links</span>
                   <span aria-hidden="true">▾</span>
                 </button>
-                <div id="marketing-submenu" className="sub-menu">
+                <div id={submenuId} className="sub-menu">
                   {link.children.map((child) => (
                     <Link
                       key={child.label}
@@ -103,16 +127,8 @@ export default function SiteHeader() {
                   ))}
                 </div>
               </div>
-            ) : (
-              <Link
-                key={link.label}
-                to={link.to}
-                onClick={(event) => onNavClick(event, link.to)}
-              >
-                {link.label}
-              </Link>
-            ),
-          )}
+            );
+          })}
           <Link
             className="btn primary nav-cta"
             to="/#tools"
