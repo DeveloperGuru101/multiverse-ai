@@ -8,7 +8,6 @@ import WorkflowDiagram from "../components/guide/WorkflowDiagram";
 import FAQ from "../components/guide/FAQ";
 import AffiliateDisclosure from "../components/guide/AffiliateDisclosure";
 import {
-  HOSTINGER_VPS_URL,
   HOSTINGER_VPS_PRICING_URL,
   HOSTINGER_VPS_DASHBOARD_HELP_URL,
   HOSTINGER_VPS_BACKUP_HELP_URL,
@@ -32,7 +31,7 @@ import "../styles/hostinger-vps-guide.css";
 const CTA = ({ children = "Explore Hostinger VPS" }) => (
   <a
     className="btn primary"
-    href={HOSTINGER_VPS_URL}
+    href={HOSTINGER_VPS_PRICING_URL}
     target="_blank"
     rel="noopener noreferrer sponsored"
   >
@@ -686,7 +685,19 @@ export default function HostingerVpsGuide() {
                   <Link to="/blog/highlevel-review">HighLevel review</Link> and{" "}
                   <Link to="/systeme">Systeme.io guide</Link>.
                 </p>
-                <CTA>Explore Hostinger VPS</CTA>
+                <div className="guide-cta">
+                  <h3>Ready to compare Hostinger VPS plans?</h3>
+                  <p>
+                    Review the current resources, pricing term, and support
+                    details against your workload before choosing a plan. If
+                    you manage several client projects, see our practical{" "}
+                    <Link to="/blog/hostinger-vps-agencies">
+                      Hostinger VPS guide for digital agencies
+                    </Link>
+                    {" "}for planning performance, security, and recovery.
+                  </p>
+                  <CTA>Compare Hostinger VPS plans</CTA>
+                </div>
               </section>
               <section id="faq">
                 <h2>Hostinger VPS FAQ</h2>
@@ -719,7 +730,7 @@ export default function HostingerVpsGuide() {
                   </li>
                   <li>
                     <a
-                      href={HOSTINGER_VPS_DASHBOARD_HELP_URL}
+                      href={HOSTINGER_VPS_PRICING_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                     >

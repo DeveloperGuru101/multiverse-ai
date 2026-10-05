@@ -76,6 +76,12 @@ export default function Blog() {
             <p>A practical look at Hostinger VPS plans, server control, security, setup, everyday developer workflows, and alternatives.</p>
             <p className="section-link"><Link to="/hostinger-vps-review">Read the Hostinger VPS review →</Link></p>
           </article>
+          <article className="card featured-guide">
+            <p className="eyebrow">VPS hosting for agencies</p>
+            <h2><Link to="/blog/hostinger-vps-agencies">How Hostinger VPS supports digital agencies</Link></h2>
+            <p>Practical guidance on running client websites and applications, with an independent look at performance, security, reliability, and scaling.</p>
+            <p className="section-link"><Link to="/blog/hostinger-vps-agencies">Read the agency VPS guide →</Link></p>
+          </article>
           <div className="card-grid post-grid">
             {posts.map((post) => (
               <article className="card" key={post.slug}>

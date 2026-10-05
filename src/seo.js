@@ -13,6 +13,7 @@ export const indexablePaths = [
   "/blog/marketing",
   "/blog/automation",
   "/blog/agency-growth",
+  "/blog/hostinger-vps-agencies",
   "/blog/adcreative-ai-review",
   "/blog/highlevel-review",
   "/hostinger-vps-review",

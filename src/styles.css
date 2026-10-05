@@ -533,6 +533,41 @@ section[id] {
   margin-top: 28px;
 }
 
+.article h3 {
+  margin: 18px 0 10px;
+}
+
+.table-scroll {
+  max-width: 100%;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.table-scroll table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table-scroll caption {
+  padding: 10px 0;
+  color: var(--muted);
+  text-align: left;
+  font-weight: 600;
+}
+
+.table-scroll th,
+.table-scroll td {
+  min-width: 120px;
+  padding: 11px 13px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.table-scroll th {
+  background: var(--surface);
+}
+
 .post-list {
   display: grid;
   gap: 10px;

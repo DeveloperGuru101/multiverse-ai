@@ -5,6 +5,7 @@ import SeoHead from "../components/SeoHead";
 import Breadcrumbs from "../components/Breadcrumbs";
 import posts, { getPost } from "../data/posts";
 import { SITE } from "../seo";
+import { HOSTINGER_VPS_PRICING_URL } from "../links";
 
 export default function BlogPost() {
   const { slug } = useParams();
@@ -71,18 +72,43 @@ function Article({ post }) {
       {post.sections.map((section) => (
         <section key={section.heading}>
           <h2>{section.heading}</h2>
-          {section.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+          {section.subheading && <h3>{section.subheading}</h3>}
+          {section.paragraphs?.map((paragraph) => (
+            <p key={paragraph}>{renderInlineLinks(paragraph)}</p>
           ))}
           {section.list && (
             <ul className="plain-list">
               {section.list.map((item) => (
-                <li key={item}>{item}</li>
+                <li key={item}>{renderInlineLinks(item)}</li>
               ))}
             </ul>
           )}
+          {section.table && (
+            <div className="table-scroll">
+              <table>
+                <caption>{section.table.caption}</caption>
+                <thead><tr>{section.table.headers.map((header) => <th key={header} scope="col">{header}</th>)}</tr></thead>
+                <tbody>{section.table.rows.map((row) => <tr key={row[0]}>{row.map((cell, index) => <td key={`${row[0]}-${index}`}>{cell}</td>)}</tr>)}</tbody>
+              </table>
+            </div>
+          )}
         </section>
       ))}
+
+      {post.callToAction && (
+        <aside className="card featured-guide" aria-label="Hostinger VPS plans">
+          <h2>{post.callToAction.heading}</h2>
+          <p>{post.callToAction.text}</p>
+          <a
+            className="btn primary"
+            href={HOSTINGER_VPS_PRICING_URL}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+          >
+            {post.callToAction.label} →
+          </a>
+        </aside>
+      )}
 
       <h2>Related</h2>
       <ul className="plain-list">
@@ -110,6 +136,20 @@ function Article({ post }) {
       </p>
     </article>
   );
+}
+
+function renderInlineLinks(text) {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((part, index) => {
+    const match = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (!match) return part;
+    const [, label, href] = match;
+    return href.startsWith("/") ? (
+      <Link key={`${href}-${index}`} to={href}>{label}</Link>
+    ) : (
+      <a key={`${href}-${index}`} href={href} target="_blank" rel="noreferrer">{label}</a>
+    );
+  });
 }
 
 function Missing() {
