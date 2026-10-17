@@ -47,11 +47,6 @@ export default function SiteFooter() {
           </nav>
         </div>
 
-        <p className="disclosure">
-          Some links on MultiverseAI may be affiliate links. We may earn a
-          commission if you purchase through these links, at no additional cost
-          to you.
-        </p>
         <p className="copyright">
           © {new Date().getFullYear()} MultiverseAI. All rights reserved.
         </p>

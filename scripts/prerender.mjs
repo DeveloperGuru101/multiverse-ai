@@ -61,6 +61,65 @@ for (const route of routes) {
   writePage(route, template);
 }
 
+function readMeta(html, name, attribute = "name") {
+  const tags = html.match(/<meta\s[^>]*>/g) || [];
+  const tag = tags.find((item) => {
+    const match = item.match(new RegExp(`${attribute}="([^"]+)"`));
+    return match?.[1] === name;
+  });
+  return tag?.match(/content="([^"]*)"/)?.[1];
+}
+
+function readCanonical(html) {
+  const link = html.match(/<link\s[^>]*rel="canonical"[^>]*>/)?.[0];
+  return link?.match(/href="([^"]+)"/)?.[1];
+}
+
+function decodeHtml(value) {
+  return value
+    .replaceAll("&amp;", "&")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#x27;", "'")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">");
+}
+
+const metadataValues = { title: new Set(), description: new Set(), canonical: new Set() };
+for (const route of indexablePaths) {
+  const outputPath = route === "/"
+    ? path.join(dist, "index.html")
+    : path.join(dist, route, "index.html");
+  const html = fs.readFileSync(outputPath, "utf8");
+  const title = decodeHtml(html.match(/<title>([\s\S]*?)<\/title>/)?.[1] || "");
+  const description = readMeta(html, "description");
+  const canonical = readCanonical(html);
+  const robots = readMeta(html, "robots");
+  const ogTitle = readMeta(html, "og:title", "property");
+  const ogDescription = readMeta(html, "og:description", "property");
+  const ogUrl = readMeta(html, "og:url", "property");
+  const twitterTitle = readMeta(html, "twitter:title");
+  const twitterDescription = readMeta(html, "twitter:description");
+
+  if (!title || !description || !canonical) {
+    throw new Error(`Indexable route ${route} is missing a title, description, or canonical URL.`);
+  }
+  if (robots?.includes("noindex")) {
+    throw new Error(`Indexable route ${route} is marked noindex.`);
+  }
+  if (!ogTitle || !ogDescription || ogUrl !== canonical || !twitterTitle || !twitterDescription) {
+    throw new Error(`Indexable route ${route} is missing or mismatching social metadata.`);
+  }
+  if (!canonical.startsWith(`${SITE}/`)) {
+    throw new Error(`Canonical URL for ${route} is outside the configured site origin.`);
+  }
+  for (const [field, value] of Object.entries({ title, description, canonical })) {
+    if (metadataValues[field].has(value)) {
+      throw new Error(`Duplicate ${field} found on indexable route ${route}: ${value}`);
+    }
+    metadataValues[field].add(value);
+  }
+}
+
 const urls = indexablePaths
   .map((route) => `  <url>\n    <loc>${route === "/" ? `${SITE}/` : `${SITE}${route}`}</loc>\n  </url>`)
   .join("\n");

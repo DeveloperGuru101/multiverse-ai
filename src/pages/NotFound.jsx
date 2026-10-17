@@ -8,6 +8,7 @@ const links = [
   ["Systeme.io guide", "/systeme"],
   ["HighLevel", "/highlevel"],
   ["AdCreative.ai", "/adcreative"],
+  ["Hostinger cloud hosting", "/hostinger-cloud-hosting-review"],
   ["Guides", "/guides"],
   ["Blog", "/blog"],
 ];

@@ -26,6 +26,15 @@ export const HOSTINGER_VPS_SETUP_HELP_URL = "https://www.hostinger.com/in/cart?p
 
 export const HOSTINGER_AGENCY_URL = "https://www.hostinger.com/in/cart?product=hosting%3Aagency_professional&period=12&referral_type=cart_link&REFERRALCODE=UYUDEVELOOEC&referral_id=01a0e247-f94f-71a3-ab5c-5a245e564d2c"
 
+export const HOSTINGER_CLOUD_URL =
+  "https://www.hostinger.com/cloud-hosting?REFERRALCODE=UYUDEVELOOEC";
+export const HOSTINGER_CLOUD_OFFICIAL_URL = "https://www.hostinger.com/cloud-hosting";
+export const HOSTINGER_PRICING_URL = "https://www.hostinger.com/pricing";
+export const HOSTINGER_LIMITS_URL =
+  "https://www.hostinger.com/support/6976044-parameters-and-limits-for-hosting-plans";
+export const HOSTINGER_COST_URL =
+  "https://www.hostinger.com/tutorials/how-much-does-website-hosting-cost/";
+
 
 
 export const HIGHLEVEL_PRICING_URL = "https://www.gohighlevel.com/?fp_ref=guruprasad57";

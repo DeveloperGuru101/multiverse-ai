@@ -166,6 +166,7 @@ const featuredGuides = [
   { title: "Systeme.io review", to: "/systeme" },
   { title: "AdCreative.ai review", to: "/blog/adcreative-ai-review" },
   { title: "GoHighLevel CRM review", to: "/blog/highlevel-review" },
+  { title: "Hostinger cloud hosting review", to: "/hostinger-cloud-hosting-review" },
   { title: "Hostinger VPS review", to: "/hostinger-vps-review" },
   { title: "Lead follow-up automation", to: "/blog/automation" },
 ];
@@ -239,9 +240,7 @@ export default function Home() {
   return (
     <div className="page">
       <SeoHead
-        title="MultiverseAI | AI Tools, Marketing Automation & Software Guides"
-        description="Explore practical AI tool reviews, marketing automation, CRM workflows, software comparisons, and VPS hosting guides for online businesses and developers."
-        path="/"
+        page="/"
         jsonLd={{
           "@context": "https://schema.org",
           "@graph": [

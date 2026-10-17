@@ -1,201 +1,130 @@
+import SiteFooter from "../components/SiteFooter";
+import SiteHeader from "../components/SiteHeader";
 import SeoHead from "../components/SeoHead";
+import { SITE } from "../seo";
 
 export default function Privacy() {
   return (
-    <div style={s.page}>
+    <div className="page">
       <SeoHead
         title="Privacy Policy | MultiverseAI"
-        description="How MultiverseAI handles basic visit data, cookies, analytics, and links to third-party software sites on multiverseaiapp.com."
+        description="Read how MultiverseAI’s website uses Google measurement tags, what information may be processed, and how to contact the site about privacy."
         path="/privacy"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Privacy Policy",
+          description: "Privacy information for the MultiverseAI website.",
+          url: `${SITE}/privacy`,
+          isPartOf: { "@type": "WebSite", name: "MultiverseAI", url: `${SITE}/` },
+        }}
       />
+      <SiteHeader />
+      <main className="section">
+        <article className="container narrow legal-content">
+          <p className="eyebrow">Transparency</p>
+          <h1>Privacy Policy</h1>
+          <p className="fine-print">Last updated: October 6, 2026</p>
 
-      {/* NAV */}
-      <nav style={s.nav}>
-        <span style={s.navLogo}>MultiverseAIAPP</span>
-        <div style={s.navLinks}>
-          <a href="/" style={s.navLink}>Home</a>
-          <a href="/terms" style={s.navLink}>Terms</a>
-        </div>
-      </nav>
-
-      {/* HEADER */}
-      <div style={s.header}>
-        <h1 style={s.h1}>Privacy Policy</h1>
-        <p style={s.headerSub}>Last updated: April 2026</p>
-      </div>
-
-      {/* CONTENT */}
-      <div style={s.content}>
-
-        <h2 style={s.h2}>Overview</h2>
-        <p style={s.p}>
-          This Privacy Policy explains how Multiverse AI collects and uses basic
-          information when you visit this website.
-        </p>
-
-        <hr style={s.divider} />
-
-        <h2 style={s.h2}>Information We Collect</h2>
-        <ul style={s.ul}>
-          <li style={s.li}>Usage data (pages visited, browser type)</li>
-          <li style={s.li}>IP address and device information</li>
-          <li style={s.li}>Cookies for analytics and performance</li>
-        </ul>
-
-        <hr style={s.divider} />
-
-        <h2 style={s.h2}>How We Use Information</h2>
-        <ul style={s.ul}>
-          <li style={s.li}>Improve website performance</li>
-          <li style={s.li}>Understand user behavior</li>
-          <li style={s.li}>Maintain security</li>
-        </ul>
-
-        <hr style={s.divider} />
-
-        <h2 style={s.h2}>Cookies</h2>
-        <p style={s.p}>
-          Cookies help improve your experience. You can disable them in your browser.
-        </p>
-
-        <hr style={s.divider} />
-
-        <h2 style={s.h2}>Third-Party Links</h2>
-        <p style={s.p}>
-          This website may link to third-party platforms. We are not responsible for their policies.
-        </p>
-
-        <hr style={s.divider} />
-
-        <h2 style={s.h2}>Data Security</h2>
-        <p style={s.p}>
-          We take reasonable steps to protect your data.
-        </p>
-
-        <hr style={s.divider} />
-
-        <h2 style={s.h2}>Contact</h2>
-        <div style={s.contactCard}>
-          <div style={s.contactName}>Multiverse AI</div>
-          <p style={s.contactItem}>
-            🌐 <a href="https://www.multiverseaiapp.com" style={s.link}>multiverseaiapp.com</a>
+          <p>
+            This policy describes data handling visible in the MultiverseAI
+            website code. The site is an editorial resource for AI tools,
+            marketing software, automation workflows, and hosting. It does not
+            provide an account, submit user content to an AI service, or include
+            a contact form in this codebase.
           </p>
-          <p style={s.contactItem}>
-            ✉️ <a href="mailto:support@multiverseaiapp.com" style={s.link}>
-              support@multiverseaiapp.com
-            </a>
+
+          <h2>Information processed when you visit</h2>
+          <p>
+            The site loads Google Analytics and Google Ads measurement scripts.
+            The code sends page-view configuration when routes change. Google’s
+            scripts may use cookies or similar
+            technologies and may process technical and interaction data such as
+            page URLs, browser or device information, and network identifiers.
+            The exact data, cookie behavior, retention, and settings are
+            controlled in part by Google’s services and the site owner’s Google
+            account configuration; these cannot be confirmed from this
+            repository alone.
           </p>
-        </div>
+          <p>
+            The site is configured for deployment on Vercel. The deployment
+            provider may process request and security logs to deliver and protect
+            the site. The repository does not specify log fields or retention
+            periods. Please consult the provider’s current privacy information
+            for its processing details.
+          </p>
 
-      </div>
+          <h2>Information you choose to provide</h2>
+          <p>
+            There are no registration, payment, or website forms in the main
+            MultiverseAI site. A mail link is provided for support. If you
+            contact the site at <a href="mailto:support@multiverseaiapp.com">support@multiverseaiapp.com</a>,
+            you choose what to include in your message; the email provider and
+            mail systems involved may process that information. The site does
+            not specify how support messages are retained.
+          </p>
 
-      {/* FOOTER */}
-      <footer style={s.footer}>
-        <span>© 2026 MultiverseAIAPP</span>
-        <div style={s.footerLinks}>
-          <a href="/privacy" style={s.footerLink}>Privacy Policy</a>
-          <a href="/terms" style={s.footerLink}>Terms & Conditions</a>
-        </div>
-      </footer>
+          <h2>Affiliate and other external links</h2>
+          <p>
+            Some reviews link to third-party products using affiliate URLs. If
+            you follow one, the destination may receive ordinary connection
+            information and the referral identifier in the link. Those
+            providers operate under their own privacy practices. The site also
+            links to external documentation and product pages. No third-party
+            content is embedded by the main site code reviewed for this policy.
+          </p>
 
+          <h2>Cookies and choices</h2>
+          <p>
+            Google Analytics and Google Ads scripts are present. Depending on
+            their configuration and your settings, Google may use cookies or
+            similar technologies for measurement or advertising. This site does
+            not currently show a cookie preference banner or consent-management
+            tool. You can review cookie controls in your browser and Google’s
+            privacy and advertising controls. Blocking cookies or scripts may
+            affect measurement, but the editorial pages remain available.
+          </p>
+
+          <h2>Retention, security, and international processing</h2>
+          <p>
+            The repository does not disclose Google Analytics retention
+            settings, Vercel log retention, or support-email retention. These
+            should be confirmed by the site operator in the relevant service
+            accounts. Google, Vercel, and email providers may process
+            information in locations outside your own; their policies describe
+            their safeguards and transfer practices. This code inspection does
+            not establish a particular security certification or guarantee.
+          </p>
+
+          <h2>Your privacy rights</h2>
+          <p>
+            Rights and available complaint channels depend on where you live
+            and which privacy laws apply. You may contact the site about a
+            privacy question using the address below. Requests involving
+            Google, Vercel, or your email provider may need to be made directly
+            to that provider. The site operator should confirm the applicable
+            jurisdiction, responsible legal entity, and any designated privacy
+            or grievance contact before relying on this page as a complete
+            statutory notice.
+          </p>
+
+          <h2>Changes to this policy</h2>
+          <p>
+            Updates will be published on this page with a revised update date.
+            The policy should be reviewed when analytics, advertising, hosting,
+            or other data practices change.
+          </p>
+
+          <h2>Contact</h2>
+          <p>
+            For privacy questions, email <a href="mailto:support@multiverseaiapp.com">support@multiverseaiapp.com</a>.
+            The individual or legal entity operating MultiverseAI and its
+            jurisdiction are not identified in the project files and need to be
+            confirmed by the site owner.
+          </p>
+        </article>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
-
-const s = {
-  page: {
-    minHeight: '100vh',
-    background: 'radial-gradient(circle at top, #0f1b3d, #020617 70%)',
-    color: '#ffffff',
-    fontFamily: 'Arial, sans-serif',
-  },
-
-  nav: {
-    position: 'sticky',
-    top: 0,
-    background: 'rgba(2,6,23,0.95)',
-    borderBottom: '1px solid #1e293b',
-    padding: '0 10%',
-    height: '60px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-
-  navLogo: { fontWeight: 800, fontSize: '20px' },
-  purple: { color: '#818cf8' },
-
-  navLinks: { display: 'flex', gap: '20px' },
-  navLink: { color: '#94a3b8', textDecoration: 'none', fontSize: '14px' },
-
-  header: {
-    padding: '60px 10%',
-    borderBottom: '1px solid #1e293b',
-  },
-
-  badge: {
-    background: 'rgba(129,140,248,0.15)',
-    color: '#818cf8',
-    padding: '5px 12px',
-    borderRadius: '20px',
-    fontSize: '12px',
-    marginBottom: '10px',
-  },
-
-  h1: { fontSize: '32px', fontWeight: 800 },
-  headerSub: { fontSize: '13px', color: '#475569' },
-
-  content: {
-    maxWidth: '800px',
-    margin: '0 auto',
-    padding: '40px 10%',
-  },
-
-  h2: { fontSize: '18px', marginBottom: '10px' },
-
-  p: {
-    fontSize: '14px',
-    color: '#94a3b8',
-    lineHeight: 1.7,
-  },
-
-  ul: { listStyle: 'none', paddingLeft: 0 },
-
-  li: {
-    fontSize: '14px',
-    color: '#94a3b8',
-    marginBottom: '6px',
-  },
-
-  divider: {
-    border: 'none',
-    borderTop: '1px solid #1e293b',
-    margin: '30px 0',
-  },
-
-  contactCard: {
-    background: '#020617',
-    border: '1px solid #1e293b',
-    borderRadius: '10px',
-    padding: '20px',
-    marginTop: '10px',
-  },
-
-  contactName: { fontWeight: 600 },
-  contactItem: { fontSize: '14px', color: '#94a3b8' },
-
-  link: { color: '#818cf8', textDecoration: 'none' },
-
-  footer: {
-    borderTop: '1px solid #1e293b',
-    padding: '20px 10%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    fontSize: '13px',
-    color: '#475569',
-  },
-
-  footerLinks: { display: 'flex', gap: '15px' },
-  footerLink: { color: '#475569', textDecoration: 'none' },
-};

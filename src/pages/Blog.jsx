@@ -9,9 +9,7 @@ export default function Blog() {
   return (
     <div className="page">
       <SeoHead
-        title="AI Tools, Marketing & Automation Blog | MultiverseAI"
-        description="Practical guides to AI tools, marketing workflows, lead follow-up automation, agency CRM, software reviews, and VPS hosting for developers and small businesses."
-        path="/blog"
+        page="/blog"
       />
       <SiteHeader />
       <main className="section">
@@ -69,6 +67,12 @@ export default function Blog() {
             <p className="section-link">
               <Link to="/blog/highlevel-review">Read the HighLevel review →</Link>
             </p>
+          </article>
+          <article className="card featured-guide">
+            <p className="eyebrow">Cloud hosting</p>
+            <h2><Link to="/hostinger-cloud-hosting-review">Hostinger cloud hosting review: features, pricing, and 20% off</Link></h2>
+            <p>A plan-by-plan look at Hostinger cloud hosting resources, security, add-ons, renewal pricing, and how to confirm a promotional discount.</p>
+            <p className="section-link"><Link to="/hostinger-cloud-hosting-review">Read the Hostinger cloud hosting review →</Link></p>
           </article>
           <article className="card featured-guide">
             <p className="eyebrow">Web hosting and infrastructure</p>

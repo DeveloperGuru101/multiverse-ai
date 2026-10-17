@@ -23,6 +23,7 @@ const published = [
   { title: "Systeme.io review: funnels, email, and automation", desc: "A detailed review of Systeme.io features, pricing, strengths, limitations, and alternatives for creators and small businesses.", to: "/systeme" },
   { title: "AdCreative.ai review: AI ad creative features", desc: "How AI ad generation and creative workflows fit into campaign planning, review, and testing.", to: "/blog/adcreative-ai-review" },
   { title: "GoHighLevel review: CRM and marketing automation", desc: "Explore GoHighLevel CRM, lead pipelines, follow-up workflows, appointments, pricing, and trade-offs.", to: "/blog/highlevel-review" },
+  { title: "Hostinger cloud hosting review: plans, pricing, and features", desc: "Compare Hostinger cloud hosting resources, security, backups, renewal pricing, and when shared or VPS hosting fits better.", to: "/hostinger-cloud-hosting-review" },
   { title: "Hostinger VPS review: plans and server management", desc: "Compare Hostinger VPS pricing and plans, server control, security, use cases, and alternatives.", to: "/hostinger-vps-review" },
   { title: "How to choose AI tools for work", desc: "Evaluate AI software with real writing, research, design, and business tasks before adding another subscription.", to: "/blog/ai-tools" },
   { title: "Digital marketing workflow: ads to follow-up", desc: "Connect advertising, landing pages, email, and the next step in one practical marketing workflow.", to: "/blog/marketing" },
@@ -34,9 +35,7 @@ export default function Guides() {
   return (
     <div className="page">
       <SeoHead
-        title="AI, Marketing & Software Guides | MultiverseAI"
-        description="Browse practical guides and reviews of AI tools, marketing automation, sales funnels, CRM software, agency workflows, and VPS hosting."
-        path="/guides"
+        page="/guides"
       />
       <SiteHeader />
       <main className="section">

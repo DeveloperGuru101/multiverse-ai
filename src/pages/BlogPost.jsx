@@ -99,6 +99,10 @@ function Article({ post }) {
         <aside className="card featured-guide" aria-label="Hostinger VPS plans">
           <h2>{post.callToAction.heading}</h2>
           <p>{post.callToAction.text}</p>
+          <p className="fine-print">
+            This is an affiliate link. MultiverseAI may earn a commission if
+            you purchase through it, at no additional cost to you.
+          </p>
           <a
             className="btn primary"
             href={HOSTINGER_VPS_PRICING_URL}
