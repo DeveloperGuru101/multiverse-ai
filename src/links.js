@@ -28,6 +28,8 @@ export const HOSTINGER_AGENCY_URL = "https://www.hostinger.com/in/cart?product=h
 
 export const HOSTINGER_CLOUD_URL =
   "https://www.hostinger.com/cloud-hosting?REFERRALCODE=UYUDEVELOOEC";
+export const HOSTINGER_CLOUD_PROFESSIONAL_URL =
+  "https://www.hostinger.com/in/cart?product=hosting%3Acloud_professional%3A24&product=hostinger_mail%3Apremium%3A24&period=24&referral_type=cart_link&REFERRALCODE=UYUDEVELOOEC&referral_id=01a154be-9f64-71a0-abfb-c1d3df49bf05";
 export const HOSTINGER_CLOUD_OFFICIAL_URL = "https://www.hostinger.com/cloud-hosting";
 export const HOSTINGER_PRICING_URL = "https://www.hostinger.com/pricing";
 export const HOSTINGER_LIMITS_URL =

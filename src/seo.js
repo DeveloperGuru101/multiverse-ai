@@ -99,6 +99,7 @@ export const indexablePaths = [
   "/blog/highlevel-review",
   "/hostinger-vps-review",
   "/hostinger-cloud-hosting-review",
+  "/blog/hostinger-cloud-professional",
   "/privacy",
   "/terms",
 ];

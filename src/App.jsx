@@ -13,6 +13,7 @@ import AdCreativeGuide from "./pages/AdCreativeGuide";
 import HighLevelGuide from "./pages/HighLevelGuide";
 import HostingerVpsGuide from "./pages/HostingerVpsGuide";
 import HostingerCloudGuide from "./pages/HostingerCloudGuide";
+import HostingerCloudProfessional from "./pages/HostingerCloudProfessional";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/blog/highlevel-review" element={<HighLevelGuide />} />
         <Route path="/hostinger-vps-review" element={<HostingerVpsGuide />} />
         <Route path="/hostinger-cloud-hosting-review" element={<HostingerCloudGuide />} />
+        <Route path="/blog/hostinger-cloud-professional" element={<HostingerCloudProfessional />} />
         <Route path="/highlevel" element={<ToolPage slug="highlevel" />} />
         <Route path="/adcreative" element={<ToolPage slug="adcreative" />} />
         <Route path="/guides" element={<Guides />} />

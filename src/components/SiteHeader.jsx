@@ -22,6 +22,7 @@ const links = [
       { label: "AdCreative.ai review", to: "/blog/adcreative-ai-review" },
       { label: "HighLevel review", to: "/blog/highlevel-review" },
       { label: "Cloud hosting review", to: "/hostinger-cloud-hosting-review" },
+      { label: "Cloud Professional review", to: "/blog/hostinger-cloud-professional" },
       { label: "VPS hosting review", to: "/hostinger-vps-review" },
       { label: "Hostinger VPS for digital agencies", to: "/blog/hostinger-vps-agencies" },
     ],

@@ -69,6 +69,12 @@ export default function Blog() {
             </p>
           </article>
           <article className="card featured-guide">
+            <p className="eyebrow">Automation • Cloud Professional</p>
+            <h2><Link to="/blog/hostinger-cloud-professional">Hostinger Cloud Professional plan: features, pricing, and fit</Link></h2>
+            <p>A practical look at Cloud Professional resources, WordPress tools, agency tradeoffs, and the renewal price to check before you buy.</p>
+            <p className="section-link"><Link to="/blog/hostinger-cloud-professional">Read the Cloud Professional guide →</Link></p>
+          </article>
+          <article className="card featured-guide">
             <p className="eyebrow">Cloud hosting</p>
             <h2><Link to="/hostinger-cloud-hosting-review">Hostinger cloud hosting review: features, pricing, and 20% off</Link></h2>
             <p>A plan-by-plan look at Hostinger cloud hosting resources, security, add-ons, renewal pricing, and how to confirm a promotional discount.</p>

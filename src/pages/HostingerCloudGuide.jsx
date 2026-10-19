@@ -165,6 +165,10 @@ export default function HostingerCloudGuide() {
                   Cloud Startup is the only tier whose renewal price was printed next to the plan we reviewed: $25.99 per month after the 48-month term. The crossed introductory comparison was $27.99 per month, with a 48-month charge of $383.52 against a displayed regular total of $1,343.52. Professional at $15.99 and Enterprise at $29.99 are the 48-month introductory monthly rates from the same page and from Hostinger’s pricing schema. Their renewal lines were not in the HTML we captured, because those cards sit behind the plan selector. Read them before you pay.
                 </p>
                 <p>
+                  For a dedicated walkthrough of the middle tier, including the India checkout, agency tradeoffs, and renewal checks, read the{" "}
+                  <Link to="/blog/hostinger-cloud-professional">Hostinger Cloud Professional plan guide</Link>.
+                </p>
+                <p>
                   Resource details for Professional and Enterprise come from Hostinger’s{" "}
                   <a href={HOSTINGER_COST_URL} target="_blank" rel="noopener noreferrer">hosting cost article</a> and from the{" "}
                   <a href={HOSTINGER_LIMITS_URL} target="_blank" rel="noopener noreferrer">parameters and limits article</a>. The limits article was updated about a week before this review and still describes website and mailbox caps that do not match the Startup marketing card, which says unlimited websites and unlimited mailboxes per website for the first year. When those sources disagree, the plan card at checkout is the one that matters.

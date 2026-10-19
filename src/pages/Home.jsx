@@ -167,6 +167,7 @@ const featuredGuides = [
   { title: "AdCreative.ai review", to: "/blog/adcreative-ai-review" },
   { title: "GoHighLevel CRM review", to: "/blog/highlevel-review" },
   { title: "Hostinger cloud hosting review", to: "/hostinger-cloud-hosting-review" },
+  { title: "Hostinger Cloud Professional plan", to: "/blog/hostinger-cloud-professional" },
   { title: "Hostinger VPS review", to: "/hostinger-vps-review" },
   { title: "Lead follow-up automation", to: "/blog/automation" },
 ];

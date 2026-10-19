@@ -24,6 +24,7 @@ const published = [
   { title: "AdCreative.ai review: AI ad creative features", desc: "How AI ad generation and creative workflows fit into campaign planning, review, and testing.", to: "/blog/adcreative-ai-review" },
   { title: "GoHighLevel review: CRM and marketing automation", desc: "Explore GoHighLevel CRM, lead pipelines, follow-up workflows, appointments, pricing, and trade-offs.", to: "/blog/highlevel-review" },
   { title: "Hostinger cloud hosting review: plans, pricing, and features", desc: "Compare Hostinger cloud hosting resources, security, backups, renewal pricing, and when shared or VPS hosting fits better.", to: "/hostinger-cloud-hosting-review" },
+  { title: "Hostinger Cloud Professional plan", desc: "What Cloud Professional includes, who it fits, and how to compare renewal pricing before you buy.", to: "/blog/hostinger-cloud-professional" },
   { title: "Hostinger VPS review: plans and server management", desc: "Compare Hostinger VPS pricing and plans, server control, security, use cases, and alternatives.", to: "/hostinger-vps-review" },
   { title: "How to choose AI tools for work", desc: "Evaluate AI software with real writing, research, design, and business tasks before adding another subscription.", to: "/blog/ai-tools" },
   { title: "Digital marketing workflow: ads to follow-up", desc: "Connect advertising, landing pages, email, and the next step in one practical marketing workflow.", to: "/blog/marketing" },
