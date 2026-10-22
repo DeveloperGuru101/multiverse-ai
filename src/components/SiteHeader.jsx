@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 
@@ -32,17 +32,14 @@ const links = [
 ];
 
 export default function SiteHeader() {
-  const [open, setOpen] = useState(false);
+  const [openLocation, setOpenLocation] = useState(null);
   const [openSubmenu, setOpenSubmenu] = useState(null);
   const location = useLocation();
-
-  useEffect(() => {
-    setOpen(false);
-    setOpenSubmenu(null);
-  }, [location.pathname, location.hash]);
+  const routeKey = `${location.pathname}${location.hash}`;
+  const open = openLocation === routeKey;
 
   function close() {
-    setOpen(false);
+    setOpenLocation(null);
     setOpenSubmenu(null);
   }
 
@@ -68,7 +65,7 @@ export default function SiteHeader() {
           className="menu-toggle"
           aria-expanded={open}
           aria-controls="site-nav"
-          onClick={() => setOpen((value) => !value)}
+          onClick={() => setOpenLocation(open ? null : routeKey)}
         >
           <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
           <span className="menu-icon" aria-hidden="true">
@@ -97,12 +94,12 @@ export default function SiteHeader() {
             }
 
             const submenuId = `${link.label.toLowerCase()}-submenu`;
-            const isOpen = openSubmenu === link.label;
+            const isOpen = openSubmenu?.label === link.label && openSubmenu.routeKey === routeKey;
             return (
               <div
                 className={isOpen ? "nav-group is-open" : "nav-group"}
                 key={link.label}
-                onMouseEnter={() => setOpenSubmenu(link.label)}
+                onMouseEnter={() => setOpenSubmenu({ label: link.label, routeKey })}
                 onMouseLeave={() => setOpenSubmenu(null)}
               >
                 <Link to={link.to} onClick={(event) => onNavClick(event, link.to)}>
@@ -113,7 +110,7 @@ export default function SiteHeader() {
                   className="sub-toggle"
                   aria-expanded={isOpen}
                   aria-controls={submenuId}
-                  onClick={() => setOpenSubmenu(isOpen ? null : link.label)}
+                  onClick={() => setOpenSubmenu(isOpen ? null : { label: link.label, routeKey })}
                 >
                   <span className="sr-only">Show {link.label} links</span>
                   <span aria-hidden="true">▾</span>

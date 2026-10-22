@@ -91,10 +91,10 @@ const posts = [
   {
     slug: "automation",
     category: "Automation",
-    title: "Lead Follow-Up Automation: Email and CRM Workflow",
-    seoTitle: "Lead Follow-Up Automation: CRM & Email | MultiverseAI",
+    title: "Lead Follow-Up Automation System: Email & CRM Workflow",
+    seoTitle: "Lead Follow-Up Automation System: Email & CRM | MultiverseAI",
     description:
-      "Plan a lead follow-up automation workflow from form submission to email sequence and CRM task, with practical stop rules and human handoffs.",
+      "Build an automated lead follow-up system from form submission to CRM assignment, timely email, stop rules, and a human handoff.",
     sections: [
       {
         heading: "Automate the repeat, keep the judgment",
@@ -105,20 +105,33 @@ const posts = [
       {
         heading: "A sequence you can set up first",
         paragraphs: [
-          "This is enough for most small sites. You can add SMS, scoring, or extra branches after the basic path is reliable.",
+          "Start with one clear trigger and one owner. For a quote request, the trigger is a valid form submission; the owner is the person or team expected to respond. Test this path before adding SMS, lead scoring, or extra branches.",
         ],
         list: [
-          "Visitor arrives from an ad, a post, or a referral.",
-          "A page collects a name and email in exchange for something specific.",
-          "The contact is stored, with a tag for the offer they requested.",
-          "An email sequence sends a short series over a few days.",
-          "A person who replies, books, or buys is moved out of the generic sequence.",
+          "A person submits a form and receives a clear confirmation that the request arrived.",
+          "The CRM creates or updates one contact, records the source and request, and assigns an owner.",
+          "A notification creates a response task with a due time that matches the team's actual service hours.",
+          "An email delivers the requested resource or confirms the next step; any later messages follow the consent and preferences collected on the form.",
+          "A reply, booking, purchase, unsubscribe, or invalid address stops the generic sequence and routes the record to the right status.",
+        ],
+      },
+      {
+        heading: "Choose a follow-up cadence you can support",
+        paragraphs: [
+          "There is no universally correct delay. A requested download can be delivered immediately. A sales inquiry can create a prompt human task during staffed hours, while an appointment reminder should follow the booking details and the person's time zone. Set later messages only when they answer a real question or provide the next useful step; do not keep contacting someone who has opted out or already completed the goal.",
+          "Before enabling a workflow, confirm which form fields are required, what consent was given, how to unsubscribe, who handles replies, and which events stop the sequence. Rules for email, SMS, and calls vary by location and message type, so check the requirements that apply to your audience and provider.",
         ],
       },
       {
         heading: "What belongs in the emails",
         paragraphs: [
-          "The first email delivers what you promised. Later emails can explain how to use it, answer a common question, and point to one next step. Avoid a long series that repeats the same pitch. Three to five messages is enough to see whether people open and reply.",
+          "The first email delivers what you promised. A later message can explain how to use it, answer a common question, or offer one relevant next step. Avoid a long series that repeats the same pitch. Start with only the messages your team can keep accurate, then use replies, bookings, unsubscribes, and qualified outcomes to decide what to change.",
+        ],
+      },
+      {
+        heading: "Common automation failures to check",
+        paragraphs: [
+          "Duplicate contacts, missing source tags, stale email addresses, conflicting workflows, and forgotten stop conditions can make a lead follow-up system confusing or intrusive. Submit a test lead, inspect the contact record, check the assignment and timing, then reply, book, and unsubscribe to confirm each event routes correctly. Review a sample of live records regularly and pause a branch when its behavior is unclear.",
         ],
       },
       {
